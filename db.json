@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": "a94c",
+      "email": "juan@gmail.com",
+      "password": "12345",
+      "role": "user"
+    },
+    {
+      "id": "cfd6",
+      "name": "Forlan",
+      "email": "forlan@gmail.com",
+      "password": "12345",
+      "role": "user"
+    }
+  ]
+}
