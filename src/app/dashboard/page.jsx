@@ -1,5 +1,9 @@
-import { DashboardView } from "@/components/views/DashboardView";
+import { DashboardView } from '@/components/views/DashboardView'
 
-export default function DashboardPage() {
-    return <DashboardView />;
+const DashboardPage = () => {
+    return (
+        <DashboardView />
+    )
 }
+
+export default DashboardPage
