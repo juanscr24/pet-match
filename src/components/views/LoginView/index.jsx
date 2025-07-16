@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { login, isAuthenticated } from '@/lib/auth';
 import { Button } from '@/components/Core/Button';
+import { Input } from '@/components/Core/Input';
 
 export default function LoginView() {
     const router = useRouter();
@@ -31,14 +32,14 @@ export default function LoginView() {
     return (
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: 300 }}>
             <h2>Iniciar sesión</h2>
-            <input
+            <Input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Correo"
                 required
             />
-            <input
+            <Input
                 type="password"
                 value={pw}
                 onChange={(e) => setPw(e.target.value)}
