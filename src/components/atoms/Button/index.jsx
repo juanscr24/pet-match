@@ -14,7 +14,7 @@ export const Button = ({
     };
 
 
-    const style = `${variants[variant]} px-4 py-2 rounded ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
+    const style = `${variants[variant]} cursor-pointer px-4 py-2 rounded ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
 
     return (
         <button type={type} onClick={onClick} disabled={disabled} className={style}>
