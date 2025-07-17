@@ -17,8 +17,8 @@ export const DashboardView = () => {
     const user = getUser();
 
     const handleLogout = () => {
-        logout(); // 🔐 Limpia localStorage
-        router.push('/login'); // ➡️ Redirige al login
+        logout(); 
+        router.push('/login'); 
     };
 
     if (!user) return null;
