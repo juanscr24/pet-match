@@ -98,7 +98,7 @@ Abre http://localhost:3000 en tu navegador.
 
 ### 4. Levanta el json-server
 ```bash
-npx json-server --watch data/db.json --port 3001
+npx json-server --watch db.json --port 3001
 ```
 ## Despliegue
 La forma más sencilla de desplegar tu app de Next.js es con Vercel.
