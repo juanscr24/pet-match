@@ -1,9 +1,5 @@
-import RegisterView from "@/components/views/RegisterView"
+import { RegisterView } from "@/views/RegisterView";
 
-const RegisterPage = () => {
-    return (
-        <RegisterView />
-    )
+export default function RegisterPage() {
+    return <RegisterView />;
 }
-
-export default RegisterPage
