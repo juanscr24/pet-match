@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "cf25",
+      "name": "for",
+      "email": "for@gmail.com",
+      "password": "12345",
+      "city": "Barranquilla",
+      "role": "user"
+    }
+  ]
+}
