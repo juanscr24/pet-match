@@ -1,9 +1,5 @@
-import LoginView from "@/components/views/LoginView"
+import { LoginView } from "@/views/LoginView";
 
-const LoginPage = () => {
-    return (
-        <LoginView />
-    )
+export default function LoginPage() {
+    return <LoginView />;
 }
-
-export default LoginPage

@@ -1,9 +1,5 @@
-import { DashboardView } from '@/components/views/DashboardView'
+import { DarshoardView } from "@/views/DashboardView";
 
-const DashboardPage = () => {
-    return (
-        <DashboardView />
-    )
+export default function DarshoardPage() {
+    return <DarshoardView />;
 }
-
-export default DashboardPage
