@@ -6,6 +6,7 @@ import api from '@/lib/axios';
 import { isAuthenticated, login } from '@/lib/auth';
 import { Button } from '@/components/Core/Button';
 import { Input } from '@/components/Core/Input';
+import Link from 'next/link';
 
 export default function RegisterView() {
     const router = useRouter();
@@ -41,6 +42,7 @@ export default function RegisterView() {
                 name,
                 email,
                 password: pw,
+                city,
                 role: 'user' // Puedes cambiar o permitir elegir rol si quieres
             });
 
@@ -54,8 +56,9 @@ export default function RegisterView() {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: 300 }}>
-            <h2>Registrarse</h2>
+        <div className="flex justify-center items-center min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')" }}>
+        <form onSubmit={handleSubmit} className="backdrop-blur-md py-10 px-14 bg-white/30 shadow-lg rounded-xl flex flex-col items-center gap-4">
+            <h2 className="text-2xl font-semibold text-white">Registrarse</h2>
             <Input 
                 type={'name'}
                 value={name}
@@ -87,7 +90,9 @@ export default function RegisterView() {
             />
 
             <Button type='submit' children={'Crear Cuenta'} />
+            <span className='text-[#3d3d3d]'>Ya tienes cuenta? <Link className='font-bold' href='/login'>Iniciar</Link></span>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
+        </div>
     );
 }
