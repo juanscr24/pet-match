@@ -23,6 +23,14 @@
       "password": "12345",
       "city": "Barranquilla",
       "role": "user"
+    },
+    {
+      "id": "86f2",
+      "name": "allison",
+      "email": "allisonpauleth13@gmail.com",
+      "password": "123",
+      "city": "barranquilla",
+      "role": "user"
     }
   ],
   "pets": [],
