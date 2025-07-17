@@ -20,7 +20,9 @@ export async function login({ email, password }) {
 
 export function logout() {
     localStorage.removeItem('user');
+    window.location.href = '/login'; 
 }
+
 
 export function getUser() {
     if (typeof window === 'undefined') return null;
