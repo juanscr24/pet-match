@@ -1,6 +1,6 @@
 
 export const UsersView = () => {
     return (
-        <div>UsersView</div>
+        <div className="h-dvh">UsersView</div>
     )
 }

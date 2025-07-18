@@ -1,6 +1,6 @@
 
 export const PetsView = () => {
     return (
-        <div>PetsView</div>
+        <div className="h-dvh">PetsView</div>
     )
 }

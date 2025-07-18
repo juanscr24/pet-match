@@ -1,6 +1,6 @@
 
 export const MatchView = () => {
     return (
-        <div>MatchView</div>
+        <div className="h-dvh">MatchView</div>
     )
 }
