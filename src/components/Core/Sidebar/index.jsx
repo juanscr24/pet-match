@@ -42,6 +42,4 @@ export const Sidebar = () => {
                     <LogoutIcon className='text-gray-200'/>
                 </Button>
             </div>
-        </aside>
-    );
-};
+
