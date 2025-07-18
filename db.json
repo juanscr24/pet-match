@@ -33,7 +33,18 @@
       "role": "user"
     }
   ],
-  "pets": [],
+  "pets": [
+    {
+      "id": "7e7cde4e-4958-4f71-a42d-b8217594474a",
+      "name": "dada",
+      "age": "31",
+      "breed": "",
+      "temperament": "asad",
+      "weight": "",
+      "lifeExpectancy": "",
+      "userId": "cf25"
+    }
+  ],
   "adoptionRequests": [
     {
       "id": "r001",
