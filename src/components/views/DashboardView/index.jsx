@@ -1,14 +1,14 @@
 'use client'
 
-import { Navbar } from '@/components/Core/Navbar';
+import { Sidebar } from '@/components/Core/Sidebar';
 import DogCard from '@/components/Core/DogCard';
 
 export const DashboardView = () => {
     
 
     return (
-        <div>
-            <Navbar />
+        <div className='flex items-center h-dvh'>
+            <Sidebar />
             <DogCard />
         </div>
     );
