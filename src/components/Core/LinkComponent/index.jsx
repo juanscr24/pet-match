@@ -2,31 +2,23 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import PetsIcon from '@mui/icons-material/Pets'
-import GroupIcon from '@mui/icons-material/Group'
-
-export const LinkComponent = ({ href, children, profile, dashboard, match, pets, users }) => {
+export const LinkComponent = ({ href, children, icon }) => {
     const pathname = usePathname()
     const isActive = pathname === href || pathname.startsWith(href)
 
     return (
-        <Link href={href} className={`w-full`}>
+        <Link href={href} className={`w-full flex items-center text-gray-200`}>
             <div
-                className={`flex gap-2 items-center w-full rounded-md py-2 px-4 cursor-pointer transition-colors hover:bg-amber-300
-        ${isActive ? 'font-bold text-black' : 'text-gray-700 hover:text-gray-900 hover:bg-amber-200'}`}
+                className={`flex gap-2 items-center w-full py-2 px-4 cursor-pointer transition-colors hover:border-l-3 
+        ${isActive ? 'font-bold text-gray-200 border-l-3 border-gray-200' : 'text-gray-200 hover:bg-[rgba(255,255,255,0.2)]'}`}
             >
-                {profile && <AccountCircleIcon />}
-                {dashboard && <DashboardCustomizeIcon />}
-                {match && <FavoriteIcon />}
-                {pets && <PetsIcon />}
-                {users && <GroupIcon />}
+                {icon}
 
                 <span>{children}</span>
             </div>
+            {isActive && <KeyboardArrowRightIcon  className='mr-3 text-gray-200'/>}
         </Link>
     )
 }

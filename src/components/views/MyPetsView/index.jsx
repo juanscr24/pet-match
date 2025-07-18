@@ -74,7 +74,7 @@ export const MyPetsView = () => {
   };
 
   return (
-    <div style={{ maxWidth: 500, margin: "0 auto", padding: 20 }}>
+    <div className="h-dvh" style={{ maxWidth: 500, margin: "0 auto", padding: 20 }}>
       <h2>Mis Mascotas</h2>
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         <input name="name" value={formData.name} onChange={handleChange} placeholder="Nombre*" required />

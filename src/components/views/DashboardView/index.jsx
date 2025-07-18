@@ -6,7 +6,7 @@ export const DashboardView = () => {
     
 
     return (
-        <div className='flex items-center h-dvh'>
+        <div className='flex items-center justify-center h-dvh'>
             <DogCard />
         </div>
     );
