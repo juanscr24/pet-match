@@ -8,7 +8,7 @@ import GroupIcon from '@mui/icons-material/Group';
 
 export const LinkComponent = ({ href, children, profile, dashboard, match, pets, users }) => {
     return (
-        <div className='flex gap-2 hover:text-gray-500 cursor-pointer'>
+        <div className='flex gap-2 hover:text-gray-500 cursor-pointer hover:bg-amber-300 py-2 px-4'>
             {profile && <AccountCircleIcon />}
             {dashboard && <DashboardCustomizeIcon />}
             {match && <FavoriteIcon />}

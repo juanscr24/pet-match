@@ -1,3 +1,5 @@
+# PET MARCH
+
 ## 🐶 Pet-Match
 Pet-Match es una aplicación enfocada en facilitar la adopción de perros en Colombia con un sistema de match, un país con un alto índice de perros en situación de calle o abandono. Con esta herramienta, buscamos conectar a usuarios interesados en adoptar con perritos que necesitan un hogar, a través de una interfaz amigable, ágil y segura.
 
@@ -102,12 +104,10 @@ yarn install
 ```
 ### Ejecuta la aplicación en modo desarrollo
 
+
+Copiar y pegar
+
 ```bash
-
-Copiar
-
-Editar
-
 npm run dev
 # o
 yarn dev
@@ -116,29 +116,24 @@ La app estará disponible en: `http://localhost:3000`
 
 ### Inicia el servidor de la base de datos simulada (json-server)
 
+
+Copiar y pegar
+
 ```bash
-
-Copiar
-
-Editar
-
-npx json-server --watch data/db.json --port 3001
-# o
 npm run server
-
+# o
+npx json-server --watch data/db.json --port 3001
+```
 La API local estará disponible en: `http://localhost:3001`
 
-```
 
 ## ⚠️ En caso de errores relacionados con módulos
 Puedes forzar una reinstalación limpia ejecutando:
 
+Copiar y pegar
+
 ```bash
-Copiar
-
-Editar
-
 rm -rf node_modules package-lock.json
 
-npm install
-
+npm install 
+```
