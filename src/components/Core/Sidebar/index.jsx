@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { LinkComponent } from '../LinkComponent';
 import { ROUTEADMIN, ROUTESUSER } from '@/constants/ROUTES';
 import { ProfilePet } from '../ProfilePet';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const Sidebar = () => {
     const { user } = useUser();
@@ -34,12 +35,15 @@ export const Sidebar = () => {
                         ))}
                     </>
                 )}
+                <LinkComponent children='About Us' href='/aboutUs' icon={<InfoIcon />}/>
             </div>
             <hr className="border-0 h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className='flex justify-between py-7 px-5'>
                 <User />
                 <Button onClick={logout} fit className='bg-transparent hover:bg-[rgba(255,255,255,0.3)] '>
-                    <LogoutIcon className='text-gray-200'/>
+                    <LogoutIcon className='text-gray-200' />
                 </Button>
             </div>
-
+        </aside>
+    )
+}
