@@ -18,5 +18,7 @@ export const LinkComponent = ({ href, children, icon }) => {
 
                 <span>{children}</span>
             </div>
-            {isActive && <KeyboardArrowRightIcon  className='mr-3 text-gray-200'/>}
-
+            {isActive && <KeyboardArrowRightIcon className='mr-3 text-gray-200' />}
+        </Link>
+    )
+}
