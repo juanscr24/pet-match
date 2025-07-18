@@ -1,3 +1,5 @@
+# PET MARCH
+
 ## 🐶 Pet-Match
 Pet-Match es una aplicación enfocada en facilitar la adopción de perros en Colombia con un sistema de match, un país con un alto índice de perros en situación de calle o abandono. Con esta herramienta, buscamos conectar a usuarios interesados en adoptar con perritos que necesitan un hogar, a través de una interfaz amigable, ágil y segura.
 
@@ -133,6 +135,5 @@ Copiar y pegar
 ```bash
 rm -rf node_modules package-lock.json
 
-npm install
+npm install 
 ```
-
