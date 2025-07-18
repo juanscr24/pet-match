@@ -1,21 +1,32 @@
-import Link from 'next/link'
+'use client'
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PetsIcon from '@mui/icons-material/Pets';
-import GroupIcon from '@mui/icons-material/Group';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import PetsIcon from '@mui/icons-material/Pets'
+import GroupIcon from '@mui/icons-material/Group'
 
 export const LinkComponent = ({ href, children, profile, dashboard, match, pets, users }) => {
-    return (
-        <div className='flex gap-2 hover:text-gray-500 cursor-pointer hover:bg-amber-300 py-2 px-4'>
-            {profile && <AccountCircleIcon />}
-            {dashboard && <DashboardCustomizeIcon />}
-            {match && <FavoriteIcon />}
-            {pets && <PetsIcon />}
-            {users && <GroupIcon />}
+    const pathname = usePathname()
+    const isActive = pathname === href || pathname.startsWith(href)
 
-            <Link href={href}>{children}</Link>
-        </div>
+    return (
+        <Link href={href} className={`w-full`}>
+            <div
+                className={`flex gap-2 items-center w-full rounded-md py-2 px-4 cursor-pointer transition-colors hover:bg-amber-300
+        ${isActive ? 'font-bold text-black' : 'text-gray-700 hover:text-gray-900 hover:bg-amber-200'}`}
+            >
+                {profile && <AccountCircleIcon />}
+                {dashboard && <DashboardCustomizeIcon />}
+                {match && <FavoriteIcon />}
+                {pets && <PetsIcon />}
+                {users && <GroupIcon />}
+
+                <span>{children}</span>
+            </div>
+        </Link>
     )
 }
