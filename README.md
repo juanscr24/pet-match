@@ -1,106 +1,139 @@
-# 🐶 Pet-Match
+# PET MARCH
 
-**Pet-Match** es una aplicación tipo Tinder para adopción de perros. Los usuarios pueden ver tarjetas de perritos extraídas desde [TheDogAPI](https://thedogapi.com), darles "like" o "dislike", y crear matches para gestionar adopciones. También cuenta con autenticación por roles (usuario/admin), protección de rutas y almacenamiento de datos usando `json-server`.
+## 🐶 Pet-Match
+Pet-Match es una aplicación enfocada en facilitar la adopción de perros en Colombia con un sistema de match, un país con un alto índice de perros en situación de calle o abandono. Con esta herramienta, buscamos conectar a usuarios interesados en adoptar con perritos que necesitan un hogar, a través de una interfaz amigable, ágil y segura.
 
-Además, **la aplicación integra TheDogAPI**, una API externa que proporciona información sobre razas, temperamento, peso y esperanza de vida de cada peludito.
+## ❗ Problema
+En Colombia, miles de perros viven en condición de abandono, expuestos a maltrato, hambre y enfermedades. A pesar de los esfuerzos de fundaciones y rescatistas, muchas veces no logran encontrar adoptantes adecuados debido a la falta de visibilidad y plataformas eficientes para promover la adopción.
 
----
+## 💡 Solución
+Pet-Match es una app interactiva que conecta a usuarios con perros en adopción de forma sencilla y segura. Permite visualizar perros con datos reales extraídos desde TheDogAPI, gestionar "likes" y "matches", y llevar un registro de las solicitudes de adopción. Cuenta con autenticación por roles, rutas protegidas, persistencia de sesión y backend simulado con json-server.
 
 ## 🚀 Tecnologías utilizadas
+Next.js 15
 
-- [Next.js 15](https://nextjs.org/)
-- [React](https://react.dev/)
-- [Axios](https://axios-http.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [json-server](https://github.com/typicode/json-server)
-- [TheDogAPI](https://thedogapi.com) 🐾
-- LocalStorage (para persistencia de sesión)
-- UUID (para generar IDs únicos)
+React
 
----
+Axios
 
-## 🎯 Funcionalidades
+Tailwind CSS
 
-- ✅ Login y Registro con persistencia de sesión
-- ✅ Roles de usuario (`admin` y `user`)
-- ✅ Rutas protegidas según rol
-- ✅ Tarjetas dinámicas con perritos (API externa)
-- ✅ Botones de "Like" y "Dislike"
-- ✅ Registro de matches en `json-server`
-- ✅ Página de Dashboard con botón de Logout
-- ✅ Estilos limpios con Tailwind
+json-server
 
----
+TheDogAPI 🐾
 
-## 📁 Estructura del proyecto
-/app → Rutas y navegación con Expo Router
+LocalStorage
 
-/components → Componentes atomizados (Cards, Inputs, Layouts)
+UUID
 
-/lib → Funciones para auth, API y lógica de matches
+## 🎯 Funcionalidades principales
+Login y Registro con persistencia de sesión
 
-/views → Vistas como LoginView, RegisterView, DashboardView
+Roles de usuario (admin y user)
 
-/data/db.json → Base de datos simulada con json-server
+Rutas protegidas según rol
 
-/public → Assets como favicon, imágenes
+Tarjetas dinámicas de perritos (API externa)
 
----
+Botones de Like y Dislike
+
+Registro de matches en json-server
+
+Solicitudes de adopción
+
+Dashboard personalizado y botón de Logout
+
+Estilos modernos con Tailwind
+
+## 🗂️ Estructura del proyecto
+/app → Rutas y navegación
+
+/components → Componentes reutilizables
+
+/lib → Lógica de autenticación, API y matches
+
+/views → Vistas (Login, Registro, Dashboard)
+
+/data/db.json → Base de datos simulada
+
+/public → Assets como imágenes y favicon
+
+## 🐾 Integración con TheDogAPI
+Por cada perrito se extraen los siguientes datos desde TheDogAPI:
+
+Raza
+
+Temperamento
+
+Peso aproximado
+
+Esperanza de vida
+
+Imagen
+
+Si algún dato no está disponible, la app lo reemplaza con un mensaje por defecto amigable.
 
 ## 🧪 Base de datos simulada (json-server)
+El archivo db.json simula el backend de la aplicación con las siguientes colecciones:
 
-Tu base de datos `db.json` incluye:
+users
 
-- `users`: Usuarios registrados
-- `pets`: Mascotas registradas por usuarios
-- `matches`: Registros de likes/dislikes
-- `adoptionRequests`: Solicitudes de adopción
+pets
 
----
+matches
 
-## 🐾 TheDogAPI
+adoptionRequests
 
-El proyecto se conecta con [TheDogAPI](https://thedogapi.com) para mostrar perros aleatorios. Por cada perro se extraen datos como:
+## 🛠️ Instalación y ejecución local
+### Clona el repositorio
 
-- Nombre de la raza
-- Temperamento
-- Peso aproximado
-- Esperanza de vida
-- Imagen
-
-Si alguno de estos datos no está disponible, la app lo reemplaza con un mensaje amigable por defecto.
-
----
-
-## 🛠️ Instalación y ejecución
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-### 1. Clona el proyecto
+Copiar y pegar
 ```bash
 git clone https://github.com/tu-usuario/pet-match.git
+
 cd pet-match
 ```
-### 2.  Instala dependencias
-```bash 
+### Instala las dependencias
+
+Copiar y pegar
+
+```bash
 npm install
 # o
 yarn install
 ```
-### 2.  Ejecuta el servidor de desarrollo
+### Ejecuta la aplicación en modo desarrollo
+
+
+Copiar y pegar
+
 ```bash
 npm run dev
 # o
 yarn dev
 ```
+La app estará disponible en: `http://localhost:3000`
 
-Abre http://localhost:3000 en tu navegador.
+### Inicia el servidor de la base de datos simulada (json-server)
 
-### 4. Levanta el json-server
+
+Copiar y pegar
+
 ```bash
+npm run server
+# o
 npx json-server --watch data/db.json --port 3001
 ```
-## Despliegue
-La forma más sencilla de desplegar tu app de Next.js es con Vercel.
+La API local estará disponible en: `http://localhost:3001`
 
-Consulta la documentación de despliegue para más detalles.
+
+## ⚠️ En caso de errores relacionados con módulos
+Puedes forzar una reinstalación limpia ejecutando:
+
+Copiar y pegar
+
+```bash
+rm -rf node_modules package-lock.json
+
+npm install 
+```

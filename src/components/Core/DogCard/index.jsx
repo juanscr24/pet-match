@@ -46,43 +46,49 @@ export default function DogCard() {
     const breed = dog.breeds?.[0];
 
     return (
-        <div className="max-w-md mx-auto p-4 bg-white rounded-xl shadow-lg text-center space-y-4">
+        <div className="relative max-w-lg h-[65%] max-lg:h-[100%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
+            {/* Imagen de fondo */}
             <img
                 src={dog.url}
                 alt={breed?.name || 'Perro'}
-                className="w-full h-64 object-cover rounded-xl"
+                className="w-full h-[100%] object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
             />
 
-            <h2 className="text-xl font-bold">{breed?.name}</h2>
+            {/* Capa oscura para superponer contenido */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-6 pt-40 pb-6 flex flex-col justify-end">
+                <h2 className="text-3xl font-bold">{breed?.name}</h2>
 
-            <div className="text-left px-4 space-y-1">
-                <p>
-                    <strong>Temperamento:</strong>{' '}
-                    {breed.temperament || 'No disponible'}
-                </p>
-                <p>
-                    <strong>Peso:</strong> {breed.weight?.metric || 'No disponible'} kg
-                </p>
-                <p>
-                    <strong>Esperanza de vida:</strong>{' '}
-                    {breed.life_span || 'No disponible'}
-                </p>
-            </div>
+                <div className="mt-2 text-sm space-y-1">
+                    <p>
+                        <span className="font-semibold text-gray-300">Temperamento:</span>{' '}
+                        {breed.temperament || 'No disponible'}
+                    </p>
+                    <p>
+                        <span className="font-semibold text-gray-300">Peso:</span>{' '}
+                        {breed.weight?.metric || 'No disponible'} kg
+                    </p>
+                    <p>
+                        <span className="font-semibold text-gray-300">País:</span>{' '}
+                        {breed.country_code || 'No disponible'}
+                    </p>
+                </div>
 
-            <div className="flex justify-center gap-10 mt-4">
-                <Button
-                    onClick={fetchDog}
-                    className="bg-red-500 hover:bg-red-600 text-white p-4 rounded-xl text-2xl"
-                >
-                    ❌
-                </Button>
-                <Button
-                    onClick={fetchDog}
-                    className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl text-2xl"
-                >
-                    💚
-                </Button>
+                <div className="flex justify-around gap-6 mt-5">
+                    <Button
+                        onClick={fetchDog}
+                        className="bg-red-500/50 hover:bg-red-500/70  flex justify-center text-white p-3 rounded-full text-xl shadow-md"
+                    >
+                        <img width={45} src="img/sad.webp" alt="Sad Dog" />
+                    </Button>
+                    <Button
+                        onClick={fetchDog}
+                        className="bg-green-500/50 hover:bg-green-500/70 flex justify-center text-white p-3 rounded-full text-xl shadow-md"
+                    >
+                    <img width={45} src="img/smile.webp" alt="Smile Dog" />
+                    </Button>
+                </div>
             </div>
         </div>
+
     );
 }
