@@ -102,12 +102,10 @@ yarn install
 ```
 ### Ejecuta la aplicación en modo desarrollo
 
+
+Copiar y pegar
+
 ```bash
-
-Copiar
-
-Editar
-
 npm run dev
 # o
 yarn dev
@@ -116,29 +114,25 @@ La app estará disponible en: `http://localhost:3000`
 
 ### Inicia el servidor de la base de datos simulada (json-server)
 
+
+Copiar y pegar
+
 ```bash
-
-Copiar
-
-Editar
-
-npx json-server --watch data/db.json --port 3001
-# o
 npm run server
-
+# o
+npx json-server --watch data/db.json --port 3001
+```
 La API local estará disponible en: `http://localhost:3001`
 
-```
 
 ## ⚠️ En caso de errores relacionados con módulos
 Puedes forzar una reinstalación limpia ejecutando:
 
+Copiar y pegar
+
 ```bash
-Copiar
-
-Editar
-
 rm -rf node_modules package-lock.json
 
 npm install
+```
 

@@ -13,15 +13,15 @@ export const Sidebar = () => {
     const { user } = useUser();
 
     return (
-        <aside className="shadow-xl px-6 w-80 h-[97%] rounded-2xl ml-5 bg-amber-200">
-            <div className="flex flex-col h-[97%] w-68 justify-between absolute ">
-                <div className='py-10 flex gap-4'>
+        <aside className="shadow-xl w-80 h-[97%] rounded-2xl ml-5 bg-amber-200">
+            <div className="flex flex-col h-[97%] w-80 justify-between absolute ">
+                <div className='py-10 flex gap-4 px-5'>
                     <h1 className="text-xl font-bold">PetMatch</h1>
                     <PetsIcon />
                 </div>
                 <hr />
-                <div className='flex flex-col gap-10 py-4'>
-                    <h2 className='font-bold'>Menu</h2>
+                <div className='flex flex-col gap-6'>
+                    <h2 className='font-bold px-5'>Menu</h2>
                     <LinkComponent href="/profile" children="Profile" profile/>
                     <LinkComponent href="/dashboard" children="Dashboard" dashboard/>
                     <LinkComponent href="/match" children="Match" match/>
@@ -34,7 +34,7 @@ export const Sidebar = () => {
                     )}
                 </div>
                 <hr />
-                <div className='flex justify-between py-10'>
+                <div className='flex justify-between py-10 px-5'>
                     <User />
                     <Button onClick={logout} fit className='bg-white hover:bg-gray-200'>
                         <LogoutIcon sx={{color:'black'}}/>
