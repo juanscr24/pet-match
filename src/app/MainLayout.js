@@ -12,7 +12,13 @@ export default function MainLayout({ children }) {
     return (
         <div className="app-container">
             {showSidebar && <Sidebar />}
-            <main className='ml-[350px]'>{children}</main>
+            {
+                showSidebar ? 
+                (<main className='ml-[350px]'>{children}</main>) 
+                : 
+                (<main>{children}</main>) 
+            }
+            
         </div>
     )
 }
