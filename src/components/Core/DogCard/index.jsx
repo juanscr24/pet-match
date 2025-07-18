@@ -50,7 +50,7 @@ export default function DogCard() {
             <img
                 src={dog.url}
                 alt={breed?.name || 'Perro'}
-                className="w-full h-64 object-cover rounded-xl"
+                className="w-full h-80 object-cover rounded-xl"
             />
 
             <h2 className="text-xl font-bold">{breed?.name}</h2>
