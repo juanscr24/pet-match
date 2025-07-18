@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { logout } from '@/lib/auth';
 import { Button } from '../Button';
 import { useUser } from '@/hooks/useUser';
@@ -13,8 +12,7 @@ export const Sidebar = () => {
     const { user } = useUser();
 
     return (
-        <aside className="shadow-xl w-80 h-[97%] rounded-2xl ml-5 bg-amber-200">
-            <div className="flex flex-col h-[97%] w-80 justify-between absolute ">
+        <aside className="flex flex-col h-[97%] w-80 justify-between rounded-2xl absolute ml-5  bg-amber-200 shadow-xl mt-3">
                 <div className='py-10 flex gap-4 px-5'>
                     <h1 className="text-xl font-bold">PetMatch</h1>
                     <PetsIcon />
@@ -40,7 +38,6 @@ export const Sidebar = () => {
                         <LogoutIcon sx={{color:'black'}}/>
                     </Button>
                 </div>
-            </div>
         </aside>
     );
 };
