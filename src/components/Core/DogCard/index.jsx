@@ -46,7 +46,7 @@ export default function DogCard() {
     const breed = dog.breeds?.[0];
 
     return (
-        <div className="relative max-w-lg h-[65%] max-lg:h-[100%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
+        <div className="relative max-w-lg h-[65%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
             {/* Imagen de fondo */}
             <img
                 src={dog.url}
