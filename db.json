@@ -56,6 +56,17 @@
       "lifeExpectancy": "14",
       "type": "perro",
       "userId": "cf25"
+    },
+    {
+      "id": "8d2714f4-4d36-42fa-bb4c-22d797d75c32",
+      "name": "Daniel",
+      "age": "24",
+      "breed": "Pedigri",
+      "temperament": "Bravo",
+      "weight": "70",
+      "lifeExpectancy": "90",
+      "type": "perro",
+      "userId": "cf25"
     }
   ],
   "adoptionRequests": [
