@@ -1,20 +1,48 @@
 export const AboutUsView = () => {
     return (
-        <div className="h-dvh">
-            <h1>SOBRE NOSOTROS</h1>
-            <p>Pet-Match es una aplicación diseñada para facilitar la adopción responsable de perros en Colombia. En un país con miles de peluditos en situación de abandono, nuestra plataforma utiliza un sistema de "match" que conecta a adoptantes con perros que buscan un hogar. A través de una interfaz intuitiva y segura, hacemos que el proceso de adopción sea más humano, fácil y rápido.</p>
-            <h2>MISION</h2>
-            <p>Nuestra misión es reducir el abandono y el sufrimiento de perros en Colombia mediante una plataforma digital que facilite la adopción responsable. En Pet-Match trabajamos para conectar a personas dispuestas a adoptar con perros que buscan un hogar, a través de un sistema de emparejamiento intuitivo, seguro y confiable.
-                Nos enfocamos en crear experiencias humanas, transparentes y empáticas, promoviendo la tenencia responsable y fomentando una cultura de respeto hacia los animales. Queremos hacer de la adopción no solo una opción, sino la mejor elección para cambiar vidas, tanto humanas como caninas.</p>
-            <h3>VISION</h3>
-            <p>Nuestra visión es ser la plataforma de adopción animal más confiable, innovadora y accesible de Colombia y América Latina. Aspiramos a transformar la manera en que las personas adoptan, usando la tecnología como puente entre el corazón de quienes buscan una compañía fiel y los perros que necesitan una segunda oportunidad.
-                Soñamos con un futuro donde cada perro abandonado encuentre un hogar lleno de amor, cuidado y dignidad. Buscamos inspirar una comunidad consciente, solidaria y comprometida con el bienestar animal, en la que adoptar sea un acto de amor tan natural como necesario.</p>
-            <h3>VALORES DE PET-MATCH</h3>
-            <li>Empatia: Nos ponemos en el lugar de cada perro y cada adoptante para crear conexiones auténticas y humanas</li>
-            <li>Responsabilidad: Promovemos la adopción consciente, el cuidado animal y la tenencia responsable.</li>
-            <li>Transparencia: Actuamos con honestidad en cada paso del proceso, brindando información clara y confiable. </li>
-            <li>Inovaccion: Utilizamos la tecnología para mejorar la experiencia de adopción y hacerla más accesible, segura y efectiva.</li>
-            <li>Compromiso Social:Trabajamos por una Colombia con menos abandono animal y más hogares llenos de amor. </li>
+        <div
+            className="min-h-screen text-white px-6 py-10 sm:px-10 md:px-20 flex justify-center items-center"
+            style={{
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat"
+            }}
+        >
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl w-full space-y-8">
+                <h1 className="text-4xl md:text-5xl font-bold text-center text-white tracking-wide">
+                    Sobre Nosotros
+                </h1>
+
+                <p className="text-lg leading-relaxed text-justify text-gray-200">
+                    <strong className="">Pet-Match</strong> es una aplicación diseñada para facilitar la adopción responsable de perros en Colombia. En un país con miles de peluditos en situación de abandono, nuestra plataforma utiliza un sistema de "match" que conecta a adoptantes con perros que buscan un hogar. A través de una interfaz intuitiva y segura, hacemos que el proceso de adopción sea más humano, fácil y rápido.
+                </p>
+
+                <div>
+                    <h2 className="text-lg font-bold mb-2">Misión</h2>
+                    <p className="text-gray-200 leading-relaxed text-justify">
+                        Nuestra misión es reducir el abandono y el sufrimiento de perros en Colombia mediante una plataforma digital que facilite la adopción responsable. Nos enfocamos en crear experiencias humanas, transparentes y empáticas, promoviendo la tenencia responsable y fomentando una cultura de respeto hacia los animales.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 className="text-lg font-bold mb-2">Visión</h2>
+                    <p className="text-gray-200 leading-relaxed text-justify">
+                        Aspiramos a ser la plataforma de adopción animal más confiable, innovadora y accesible de Colombia y América Latina. Soñamos con un futuro donde cada perro abandonado encuentre un hogar lleno de amor, cuidado y dignidad.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 className="text-lg font-bold mb-4">Valores de Pet-Match</h2>
+                    <ul className="list-disc list-inside space-y-2 text-gray-200">
+                        <li><span className="font-semibold text-white">Empatía:</span> Nos ponemos en el lugar de cada perro y adoptante.</li>
+                        <li><span className="font-semibold text-white">Responsabilidad:</span> Promovemos la adopción consciente.</li>
+                        <li><span className="font-semibold text-white">Transparencia:</span> Información clara y confiable.</li>
+                        <li><span className="font-semibold text-white">Innovación:</span> Tecnología al servicio del bienestar animal.</li>
+                        <li><span className="font-semibold text-white">Compromiso Social:</span> Trabajamos por una Colombia sin abandono animal.</li>
+                    </ul>
+                    
+                </div>
+            </div>
         </div>
     );
-}
+};

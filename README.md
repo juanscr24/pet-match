@@ -134,6 +134,6 @@ Copiar y pegar
 
 ```bash
 rm -rf node_modules package-lock.json
-
+# and
 npm install 
 ```

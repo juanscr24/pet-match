@@ -6,6 +6,7 @@ import { Button } from '../Button';
 export default function DogCard() {
     const [dog, setDog] = useState(null);
     const [loading, setLoading] = useState(true);
+    const currentUserId = 'cf25'; // <- luego hazlo dinámico según tu auth
 
     const fetchDog = async () => {
         setLoading(true);
@@ -13,7 +14,6 @@ export default function DogCard() {
             let dogData = null;
             let attempts = 0;
 
-            // 🔁 Repetir hasta que tenga raza
             while (!dogData?.breeds?.[0] && attempts < 10) {
                 const response = await axios.get(
                     'https://api.thedogapi.com/v1/images/search?include_breeds=1',
@@ -39,6 +39,34 @@ export default function DogCard() {
         fetchDog();
     }, []);
 
+    const handleLike = async () => {
+        if (!dog?.id) return;
+
+        try {
+            await axios.post('http://localhost:3001/matches', {
+                id: crypto.randomUUID(),
+                userId: currentUserId,
+                petId: dog.id,
+                liked: true,
+                petInfo: {
+                    url: dog.url,
+                    name: dog.breeds?.[0]?.name || 'Desconocido',
+                    temperament: dog.breeds?.[0]?.temperament || 'N/A'
+                }
+            });
+
+            console.log('Like guardado!');
+        } catch (error) {
+            console.error('Error guardando like:', error);
+        }
+
+        fetchDog(); // cargar el siguiente perrito
+    };
+
+    const handleDislike = () => {
+        fetchDog(); // simplemente pasa al siguiente perro
+    };
+
     if (loading || !dog) {
         return <p className="text-center text-gray-600">Cargando peludito...</p>;
     }
@@ -46,15 +74,12 @@ export default function DogCard() {
     const breed = dog.breeds?.[0];
 
     return (
-        <div className="relative max-w-lg h-[65%] max-lg:h-[100%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
-            {/* Imagen de fondo */}
+        <div className="relative max-w-lg h-[65%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
             <img
                 src={dog.url}
                 alt={breed?.name || 'Perro'}
                 className="w-full h-[100%] object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
             />
-
-            {/* Capa oscura para superponer contenido */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-6 pt-40 pb-6 flex flex-col justify-end">
                 <h2 className="text-3xl font-bold">{breed?.name}</h2>
 
@@ -75,20 +100,19 @@ export default function DogCard() {
 
                 <div className="flex justify-around gap-6 mt-5">
                     <Button
-                        onClick={fetchDog}
-                        className="bg-red-500/50 hover:bg-red-500/70  flex justify-center text-white p-3 rounded-full text-xl shadow-md"
+                        onClick={handleDislike}
+                        className="bg-red-500/50 hover:bg-red-500/70 flex justify-center text-white p-3 rounded-full text-xl shadow-md"
                     >
                         <img width={45} src="img/sad.webp" alt="Sad Dog" />
                     </Button>
                     <Button
-                        onClick={fetchDog}
+                        onClick={handleLike}
                         className="bg-green-500/50 hover:bg-green-500/70 flex justify-center text-white p-3 rounded-full text-xl shadow-md"
                     >
-                    <img width={45} src="img/smile.webp" alt="Smile Dog" />
+                        <img width={45} src="img/smile.webp" alt="Smile Dog" />
                     </Button>
                 </div>
             </div>
         </div>
-
     );
 }
