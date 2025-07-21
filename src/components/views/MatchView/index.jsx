@@ -1,6 +1,57 @@
+'use client';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getUser, isAuthenticated } from "@/lib/auth";
+import { useRouter } from "next/navigation";
+import { MatchList } from "@/components/Core/MatchList.jsx";
 
 export const MatchView = () => {
+    const [likedPets, setLikedPets] = useState([]);
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            router.replace('/login');
+        } else {
+            const userData = getUser();
+            setUser(userData);
+        }
+    }, []);
+
+    useEffect(() => {
+        const fetchLikedPets = async () => {
+            if (!user?.id) return;
+
+            try {
+                const { data: matches } = await axios.get("http://localhost:3001/matches");
+
+                const myLikes = matches.filter(
+                    (match) => match.userId === user.id && match.liked && match.petInfo
+                );
+
+                const petsData = myLikes.map((match) => ({
+                    id: match.petId,
+                    url: match.petInfo?.url,
+                    name: match.petInfo?.name || 'Desconocido',
+                    temperament: match.petInfo?.temperament || 'No disponible',
+                }));
+
+                setLikedPets(petsData);
+            } catch (err) {
+                console.error("Error cargando pets de Match:", err);
+            }
+        };
+
+        fetchLikedPets();
+    }, [user]);
+
+    if (!user) return null;
+
     return (
-        <div>MatchView</div>
-    )
-}
+        <div className='p-5'>
+            <h2 className="text-xl font-bold mb-4 text-white">Mascotas que te gustaron</h2>
+            <MatchList pets={likedPets} />
+        </div>
+    );
+};
