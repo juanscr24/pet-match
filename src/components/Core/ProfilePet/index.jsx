@@ -1,25 +1,11 @@
-// import EditIcon from '@mui/icons-material/Edit';
-
-// export const ProfilePet = () => {
-//     return (
-//         <div className='flex flex-col gap-8 justify-center items-center -mb-14'>
-//             <div className='flex gap-4'>
-//                 <h1 className="text-xl font-bold text-gray-200">PetMatch</h1>
-//             </div>
-//             <img alt='UserPet' src="img/profile/border-collie.webp" width={100} />
-//             <EditIcon className='text-white' fontSize='inherit'/>
-//         </div>
-//     )
-// }
-
 'use client';
 import { useState } from 'react';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
 const images = [
-    'img/profile/border-collie.webp',
-    'img/profile/malamute.webp',
-    'img/profile/saint-bernard.webp',
+    'img/profile/dog-1.webp',
+    'img/profile/dog-2.webp',
+    'img/profile/dog-3.webp',
 ];
 
 export const ProfilePet = () => {
@@ -50,7 +36,7 @@ export const ProfilePet = () => {
                 </button>
 
                 {showMenu && (
-                    <div className='absolute top-full mt-2 bg-gray-200 shadow-lg rounded-lg p-2 w-[180px] flex gap-2 z-10'>
+                    <div className='grid grid-cols-3 absolute top-full mt-2 bg-gray-200 shadow-lg rounded-lg p-2 w-[150px] gap-2 z-10'>
                         {images.map((img, index) => (
                             <img
                                 key={index}

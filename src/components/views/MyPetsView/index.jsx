@@ -1,11 +1,8 @@
 "use client";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
-import { MyPetsForm } from "@/components/Core/MyPetsForm";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
-import { Button } from '@/components/Core/Button';
 
 const API_URL = "http://localhost:3001/pets";
 
@@ -17,7 +14,9 @@ export const MyPetsView = () => {
   const [editingPetId, setEditingPetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  const currentUser = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("user")) : null;
+  const currentUser = typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
 
   const fetchPets = async () => {
     const response = await axios.get(API_URL);
@@ -48,14 +47,14 @@ export const MyPetsView = () => {
     }
 
     setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "" });
-    setShowForm(false); // Oculta el formulario después de enviar
+    setShowForm(false);
     fetchPets();
   };
 
   const handleEdit = (pet) => {
     setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
-    setShowForm(true); // Muestra el formulario al editar
+    setShowForm(true);
   };
 
   const handleDelete = async (id) => {
@@ -67,24 +66,18 @@ export const MyPetsView = () => {
 
   return (
     <div className='p-5'>
-      <h2 className="text-2xl font-bold text-white">Mis Mascotas</h2>
-      <div className="flex gap-6 pt-5 items-center">
-        <MyPetsCardList pets={myPets} onEdit={handleEdit} onDelete={handleDelete} />
-
-        <Button fit onClick={toggleForm}>
-          <AddCircleOutlineIcon className='text-white' fontSize='large'/>
-        </Button>
-
-        {showForm && (
-          <MyPetsForm
-            formData={formData}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            isEditing={!!editingPetId}
-          />
-        )}
-      </div>
+      <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
+        <MyPetsCardList
+          pets={myPets}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          showForm={showForm}
+          toggleForm={toggleForm}
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          isEditing={!!editingPetId}
+        />
     </div>
   );
 };
-

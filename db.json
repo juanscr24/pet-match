@@ -23,7 +23,7 @@
       "email": "juan@hotmail.com",
       "password": "12345",
       "city": "Barranquilla",
-      "role": "user"
+      "role": "admin"
     },
     {
       "id": "86f2",
@@ -52,21 +52,32 @@
       "age": "12",
       "breed": "Beagle",
       "temperament": "Juguetona, Tranquila",
-      "weight": "9",
+      "weight": "5",
       "lifeExpectancy": "14",
       "type": "perro",
       "userId": "cf25"
     },
     {
-      "id": "8d2714f4-4d36-42fa-bb4c-22d797d75c32",
+      "id": "f6a870f9-7172-4921-8a9c-54b4083b7364",
       "name": "Daniel",
       "age": "24",
-      "breed": "Pedigri",
+      "breed": "",
       "temperament": "Bravo",
-      "weight": "70",
-      "lifeExpectancy": "90",
-      "type": "perro",
+      "weight": "",
+      "lifeExpectancy": "",
+      "type": "gato",
       "userId": "cf25"
+    },
+    {
+      "id": "fb27122f-ad76-462d-910e-a2ffd36a3bea",
+      "name": "Hanna",
+      "age": "12",
+      "breed": "Beagle",
+      "temperament": "Tranquila, juguetona",
+      "weight": "10",
+      "lifeExpectancy": "14",
+      "type": "perro",
+      "userId": "15a9"
     }
   ],
   "adoptionRequests": [
@@ -79,39 +90,6 @@
     }
   ],
   "matches": [
-    {
-      "id": "f2e418f8-7a53-43fc-980c-0c1c416712c8",
-      "userId": "cf25",
-      "petId": "cLWrIOUqE",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/cLWrIOUqE.jpg",
-        "name": "Afghan Hound",
-        "temperament": "Aloof, Clownish, Dignified, Independent, Happy"
-      }
-    },
-    {
-      "id": "f7faaab7-7050-4eca-9b61-1ba168a4cb88",
-      "userId": "cf25",
-      "petId": "uHgHH6y4h",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/uHgHH6y4h.jpg",
-        "name": "Kooikerhondje",
-        "temperament": "Benevolent, Agile, Alert, Intelligent, Active, Territorial"
-      }
-    },
-    {
-      "id": "c74fcf9b-b045-42f3-8509-60580fab7455",
-      "userId": "cf25",
-      "petId": "MgMspgiei",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/MgMspgiei.jpg",
-        "name": "Bull Terrier",
-        "temperament": "Trainable, Protective, Sweet-Tempered, Keen, Active"
-      }
-    },
     {
       "id": "edf9be6c-97a4-456b-8cc7-142877d1659a",
       "userId": "cf25",
@@ -135,34 +113,12 @@
       }
     },
     {
-      "id": "b7919600-62d5-4faa-8ff3-6537be1cd986",
-      "userId": "cf25",
-      "petId": "A3mLu3WQ2",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/A3mLu3WQ2.jpg",
-        "name": "Alaskan Malamute",
-        "temperament": "Friendly, Affectionate, Devoted, Loyal, Dignified, Playful"
-      }
-    },
-    {
       "id": "583aa6de-1405-44ab-9439-7a70c6d6ea88",
       "userId": "cf25",
       "petId": "4UKTN_dQ5",
       "liked": true,
       "petInfo": {
         "url": "https://cdn2.thedogapi.com/images/4UKTN_dQ5.jpg",
-        "name": "Border Collie",
-        "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent"
-      }
-    },
-    {
-      "id": "6a36e8a9-2c3a-4a1a-b9a0-02a13a63149e",
-      "userId": "cf25",
-      "petId": "-Lbz7P9jl",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/-Lbz7P9jl.jpg",
         "name": "Border Collie",
         "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent"
       }
@@ -179,45 +135,12 @@
       }
     },
     {
-      "id": "16779ea2-0f2e-49ae-8044-ffff7327f03d",
+      "id": "6fa9054e-cf68-46d3-bf02-922392b5380e",
       "userId": "cf25",
-      "petId": "Sy57xx9EX",
+      "petId": "keAvlc5KL",
       "liked": true,
       "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/Sy57xx9EX_1280.jpg",
-        "name": "Basset Hound",
-        "temperament": "Tenacious, Friendly, Affectionate, Devoted, Sweet-Tempered, Gentle"
-      }
-    },
-    {
-      "id": "ee822001-89b1-451d-9b1d-d7efe360f2d3",
-      "userId": "cf25",
-      "petId": "SyYtQe5V7",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/SyYtQe5V7_1280.jpg",
-        "name": "Nova Scotia Duck Tolling Retriever",
-        "temperament": "Outgoing, Alert, Patient, Intelligent, Loving"
-      }
-    },
-    {
-      "id": "faff14b4-8d48-4f6d-94b5-7e707e243467",
-      "userId": "cf25",
-      "petId": "fQSunHvl8",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/fQSunHvl8.jpg",
-        "name": "Akita",
-        "temperament": "Docile, Alert, Responsive, Dignified, Composed, Friendly, Receptive, Faithful, Courageous"
-      }
-    },
-    {
-      "id": "091017c9-1249-4511-a272-0d5afc44daf8",
-      "userId": "cf25",
-      "petId": "nwpd32sdl",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/nwpd32sdl.jpg",
+        "url": "https://cdn2.thedogapi.com/images/keAvlc5KL.jpg",
         "name": "Shiba Inu",
         "temperament": "Charming, Fearless, Keen, Alert, Confident, Faithful"
       }

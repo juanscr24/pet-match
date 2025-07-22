@@ -57,12 +57,17 @@ export default function RegisterView() {
 
     return (
         <div
-            className="flex justify-center items-center min-h-screen bg-cover bg-center"
-            style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')" }}
+            className="relative flex justify-center items-center min-h-screen bg-cover bg-center"
+            style={{
+                backgroundImage:
+                    "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')",
+            }}
         >
+            {/* Capa oscura con desenfoque */}
+            <div className="absolute inset-0 bg-black/50 "></div>
             <form
                 onSubmit={handleSubmit}
-                className="backdrop-blur-md py-10 px-14 bg-white/30 shadow-lg rounded-xl flex flex-col items-center gap-4"
+                className="backdrop-blur-sm py-10 px-14 bg-white/20 shadow-lg rounded-xl flex flex-col items-center gap-4"
             >
                 <h2 className="text-2xl font-semibold text-white">Registrarse</h2>
 
@@ -72,6 +77,7 @@ export default function RegisterView() {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nombre"
                     required
+                    white
                 />
                 <Input
                     type="email"
@@ -79,6 +85,7 @@ export default function RegisterView() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Correo"
                     required
+                    white
                 />
                 <Input
                     type="password"
@@ -86,6 +93,7 @@ export default function RegisterView() {
                     onChange={(e) => setPw(e.target.value)}
                     placeholder="Contraseña"
                     required
+                    white
                 />
                 <Input
                     type="text"
@@ -93,10 +101,11 @@ export default function RegisterView() {
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Ciudad"
                     required
+                    white
                 />
 
-                <Button type="submit" children={'Crear Cuenta'} />
-                <span className="text-[#3d3d3d]">
+                <Button className='bg-black/50 hover:bg-black/70' type="submit" children={'Crear Cuenta'} />
+                <span className="text-gray-200">
                     Ya tienes cuenta?{' '}
                     <Link className="font-bold" href="/login">
                         Iniciar
