@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { isAuthenticated, getUser } from '@/lib/auth';
 import axios from 'axios';
+import { endPointUsers } from '@/lib/api';
+import { Button } from '@/components/Core/Button';
 
 export const ProfileView = () => {
     const router = useRouter();
@@ -24,7 +26,7 @@ export const ProfileView = () => {
 
             const storedUser = getUser();
             try {
-                const { data } = await axios.get(`http://localhost:3001/users/${storedUser.id}`);
+                const { data } = await axios.get(`${endPointUsers}/${storedUser.id}`);
                 setUser(data);
                 setDesc(data.desc || '');
             } catch (error) {
@@ -36,26 +38,32 @@ export const ProfileView = () => {
     }, []);
 
     const handleSave = async () => {
-        if (!user) return;
+        if (!user || user.name.trim() === '') return;
         setLoading(true);
         try {
-            const { data } = await axios.patch(`http://localhost:3001/users/${user.id}`, {
+            const { data } = await axios.patch(`${endPointUsers}/${user.id}`, {
+                name: user.name,
                 desc,
             });
+
+            // Guarda en localStorage para que los demás componentes lo vean actualizado
+            localStorage.setItem('user', JSON.stringify(data));
+
             setUser(data);
             setEditMode(false);
         } catch (error) {
-            console.error('Error guardando descripción:', error);
+            console.error('Error guardando datos:', error);
         } finally {
             setLoading(false);
         }
     };
 
+
     const handleDelete = async () => {
         if (!user) return;
         setLoading(true);
         try {
-            await axios.patch(`http://localhost:3001/users/${user.id}`, {
+            await axios.patch(`${endPointUsers}/${user.id}`, {
                 desc: '',
             });
             setDesc('');
@@ -70,7 +78,7 @@ export const ProfileView = () => {
     if (!user) return null;
 
     return (
-        <section className="p-10 max-w-4xl text-white">
+        <section className="p-5 max-w-2xl text-white">
             <h1 className="text-xl font-bold mb-6">Profile</h1>
 
             <div className="bg-black/40 p-6 rounded-2xl shadow-md backdrop-blur-md flex flex-col md:flex-row gap-10 items-center">
@@ -79,7 +87,20 @@ export const ProfileView = () => {
                 </div>
 
                 <div className="flex-1">
-                    <p><strong>Nombre:</strong> {user.name}</p>
+                    <p className="mb-2 font-semibold">Nombre:</p>
+                    {!editMode ? (
+                        <p className="mb-4">{user.name}</p>
+                    ) : (
+                        <input
+                            type="text"
+                            value={user.name}
+                            onChange={(e) =>
+                                setUser((prev) => ({ ...prev, name: e.target.value }))
+                            }
+                            className="p-2 rounded-md text-white w-full max-w-sm mb-4 border-2"
+                        />
+                    )}
+
                     <p><strong>Email:</strong> {user.email}</p>
                     <p><strong>Ciudad:</strong> {user.city}</p>
 
@@ -91,47 +112,51 @@ export const ProfileView = () => {
                                 {desc ? (
                                     <p className="mb-4">{desc}</p>
                                 ) : (
-                                    <p className="mb-4 text-gray-400 italic">No tienes una descripción aún.</p>
+                                    <p className="mb-4 text-gray-200 italic">No tienes una descripción aún.</p>
                                 )}
-                                <button
+                                <Button
+                                    fit
                                     onClick={() => setEditMode(true)}
-                                    className="bg-blue-500 px-4 py-2 rounded-md mr-2 cursor-pointer"
+                                    className="bg-blue-500/50 hover:bg-blue-500/80 px-4 py-2 rounded-md mr-2 cursor-pointer"
                                 >
-                                    {desc ? <ModeEditIcon/> : <AddIcon /> }
-                                </button>
+                                    {desc ? <ModeEditIcon /> : <AddIcon />}
+                                </Button>
                                 {desc && (
-                                    <button
+                                    <Button
+                                        fit
                                         onClick={handleDelete}
-                                        className="bg-red-500 px-4 py-2 rounded-md cursor-pointer"
+                                        className="bg-red-500/50 hover:bg-red-500/80 px-4 py-2 rounded-md cursor-pointer"
                                     >
                                         <DeleteOutlineIcon />
-                                    </button>
+                                    </Button>
                                 )}
                             </>
                         ) : (
                             <div className="flex flex-col gap-4">
                                 <textarea
-                                    className="p-2 rounded-md text-black resize-none h-24"
+                                    className="p-2 rounded-md text-white resize-none h-24 border-2"
                                     value={desc}
                                     onChange={(e) => setDesc(e.target.value)}
                                 />
-                                <div>
-                                    <button
+                                <div className='flex gap-2'>
+                                    <Button
+                                        fit
                                         onClick={handleSave}
-                                        disabled={loading}
-                                        className="bg-green-500 px-4 py-2 rounded-md mr-2"
+                                        disabled={loading || user.name.trim() === ''}
+                                        className="bg-green-500/50 hover:bg-green-500/80 px-4 py-2"
                                     >
                                         Guardar
-                                    </button>
-                                    <button
+                                    </Button>
+                                    <Button
+                                        fit
                                         onClick={() => {
                                             setEditMode(false);
                                             setDesc(user.desc || '');
                                         }}
-                                        className="bg-gray-500 px-4 py-2 rounded-md"
+                                        className="bg-gray-500/50 hover:bg-gray-500/80 px-4 py-2"
                                     >
                                         Cancelar
-                                    </button>
+                                    </Button>
                                 </div>
                             </div>
                         )}
@@ -140,4 +165,4 @@ export const ProfileView = () => {
             </div>
         </section>
     );
-}
+};

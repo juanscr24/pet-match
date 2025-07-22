@@ -19,11 +19,12 @@
     },
     {
       "id": "15a9",
-      "name": "Juan",
+      "name": "Juan Cardona ",
       "email": "juan@hotmail.com",
       "password": "12345",
       "city": "Barranquilla",
-      "role": "admin"
+      "role": "admin",
+      "desc": "Amante a las mascotas"
     },
     {
       "id": "86f2",
