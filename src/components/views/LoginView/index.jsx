@@ -30,12 +30,21 @@ export default function LoginView() {
         }
     };
 
-
     return (
-        <div className="flex justify-center items-center min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')" }}>
+        <div
+            className="relative flex justify-center items-center min-h-screen bg-cover bg-center"
+            style={{
+                backgroundImage:
+                    "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')",
+            }}
+        >
+            {/* Capa oscura con desenfoque */}
+            <div className="absolute inset-0 bg-black/50 "></div>
+
+            {/* Formulario */}
             <form
                 onSubmit={handleSubmit}
-                className="backdrop-blur-md py-10 px-14 bg-white/30 shadow-lg rounded-xl flex flex-col items-center gap-4"
+                className="backdrop-blur-sm relative z-10 py-10 px-14 bg-white/20 shadow-lg rounded-xl flex flex-col items-center gap-4"
             >
                 <h2 className="text-2xl font-semibold text-white">Iniciar sesión</h2>
 
@@ -45,6 +54,7 @@ export default function LoginView() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Correo"
                     required
+                    white
                 />
 
                 <Input
@@ -53,15 +63,20 @@ export default function LoginView() {
                     onChange={(e) => setPw(e.target.value)}
                     placeholder="Contraseña"
                     required
+                    white
                 />
 
-                <Button type="submit" children={'Enviar'} />
+                <Button className='bg-black/50 hover:bg-black/70' type="submit">Enviar</Button>
 
-                <span className='text-[#3d3d3d]'>No tienes cuenta? <Link className='font-bold' href='/register'>Registrate</Link></span>
+                <span className="text-gray-200">
+                    ¿No tienes cuenta?{' '}
+                    <Link className="font-bold" href="/register">
+                        Regístrate
+                    </Link>
+                </span>
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
             </form>
         </div>
-
     );
 }

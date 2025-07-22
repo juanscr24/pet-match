@@ -16,14 +16,14 @@ export const MyPetsForm = ({ formData, onChange, onSubmit, isEditing }) => {
                 value={formData.type}
                 onChange={onChange}
                 required
-                className="border rounded px-5 text-white"
+                className="border rounded p-2 text-white"
             >
                 <option className="text-black " value="">Selecciona el tipo</option>
                 <option className="text-black" value="perro">Perro</option>
                 <option className="text-black" value="gato">Gato</option>
             </select>
 
-            <Button type="submit" fit>{isEditing ? "Actualizar" : "Registrar"} mascota</Button>
+            <Button className='bg-white/20 hover:bg-white/50' type="submit" fit>{isEditing ? "Actualizar" : "Registrar"} mascota</Button>
         </form>
     );
 };
