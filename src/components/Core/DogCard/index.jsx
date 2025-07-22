@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../Button';
+import { endPointApiDog, endPointMatches, KeyApiDog } from '@/lib/api';
 
 export default function DogCard() {
     const [dog, setDog] = useState(null);
@@ -16,10 +17,10 @@ export default function DogCard() {
 
             while (!dogData?.breeds?.[0] && attempts < 10) {
                 const response = await axios.get(
-                    'https://api.thedogapi.com/v1/images/search?include_breeds=1',
+                    endPointApiDog,
                     {
                         headers: {
-                            'x-api-key': 'live_pdv9eSLIZwqtTS7bUMYS5llFqxpttrldmTH0kLvA6dc2uJO98w9JfDKu6sPavfno',
+                            'x-api-key': KeyApiDog,
                         },
                     }
                 );
@@ -43,7 +44,7 @@ export default function DogCard() {
         if (!dog?.id) return;
 
         try {
-            await axios.post('http://localhost:3001/matches', {
+            await axios.post(endPointMatches, {
                 id: crypto.randomUUID(),
                 userId: currentUserId,
                 petId: dog.id,

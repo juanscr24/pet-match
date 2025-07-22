@@ -35,7 +35,7 @@ export const Sidebar = () => {
                         ))}
                     </>
                 )}
-                <LinkComponent children='About Us' href='/aboutUs' icon={<InfoIcon />}/>
+                <LinkComponent children='Conócenos' href='/aboutUs' icon={<InfoIcon />}/>
             </div>
             <hr className="border-0 h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className='flex justify-between py-7 px-5'>

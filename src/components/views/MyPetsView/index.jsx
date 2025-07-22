@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
-
-const API_URL = "http://localhost:3001/pets";
+import { endPointPets } from "@/lib/api";
 
 export const MyPetsView = () => {
   const [myPets, setMyPets] = useState([]);
@@ -19,7 +18,7 @@ export const MyPetsView = () => {
     : null;
 
   const fetchPets = async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
@@ -39,11 +38,11 @@ export const MyPetsView = () => {
     }
 
     if (editingPetId) {
-      await axios.put(`${API_URL}/${editingPetId}`, { ...formData, userId: currentUser.id });
+      await axios.put(`${endPointPets}/${editingPetId}`, { ...formData, userId: currentUser.id });
       setEditingPetId(null);
     } else {
       const newPet = { id: uuid(), ...formData, userId: currentUser.id };
-      await axios.post(API_URL, newPet);
+      await axios.post(endPointPets, newPet);
     }
 
     setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "" });
@@ -58,7 +57,7 @@ export const MyPetsView = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`${API_URL}/${id}`);
+    await axios.delete(`${endPointPets}/${id}`);
     fetchPets();
   };
 

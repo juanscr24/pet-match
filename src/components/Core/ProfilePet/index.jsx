@@ -3,9 +3,9 @@ import { useState } from 'react';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
 const images = [
-    'img/profile/dog-1.webp',
-    'img/profile/dog-2.webp',
-    'img/profile/dog-3.webp',
+    '/img/profile/dog-1.webp',
+    '/img/profile/dog-2.webp',
+    '/img/profile/dog-3.webp',
 ];
 
 export const ProfilePet = () => {

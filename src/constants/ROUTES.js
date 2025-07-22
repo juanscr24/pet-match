@@ -6,14 +6,14 @@ import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
 
 export const ROUTESUSER = [
-    { path: "/profile", label: "Profile", icon:<AccountCircleIcon /> },
-    { path: "/dashboard", label: "Dashboard", icon: <DashboardCustomizeIcon />},
-    { path: "/match", label: "Match", icon: <FavoriteIcon />},
-    { path: "/my-pets", label: "My Pets", icon: <PetsIcon />}
+    { path: "/profile", label: "Perfil", icon:<AccountCircleIcon /> },
+    { path: "/dashboard", label: "Explorar", icon: <DashboardCustomizeIcon />},
+    { path: "/match", label: "Me gustas", icon: <FavoriteIcon />},
+    { path: "/my-pets", label: "Mis Mascotas", icon: <PetsIcon />}
 ]
 
 
 
 export const ROUTEADMIN = [
-    { path: "/admin/statistics", label: "statistics", icon:<QueryStatsIcon />},
+    { path: "/admin/statistics", label: "Estadísticas", icon:<QueryStatsIcon />},
 ]

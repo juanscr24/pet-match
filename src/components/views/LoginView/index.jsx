@@ -66,7 +66,7 @@ export default function LoginView() {
                     white
                 />
 
-                <Button className='bg-black/50 hover:bg-black/70' type="submit">Enviar</Button>
+                <Button className='bg-black/50 hover:bg-black/70' type="submit">Iniciar sesión</Button>
 
                 <span className="text-gray-200">
                     ¿No tienes cuenta?{' '}
