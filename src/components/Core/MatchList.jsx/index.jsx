@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 import { CardMatch } from "../CardMatch";
+import { endPointMatches } from "@/lib/api";
 
 
 export function MatchList() {
@@ -8,7 +9,7 @@ export function MatchList() {
 
     // Al montar, cargamos los matches desde tu JSON‑server
     useEffect(() => {
-        fetch("http://localhost:3001/matches")
+        fetch(endPointMatches)
             .then(res => res.json())
             .then(data => setMatches(data))
             .catch(err => console.error("Error al cargar matches:", err));
@@ -19,7 +20,7 @@ export function MatchList() {
         setMatches(prev => prev.filter(m => m.id !== id));
 
         // 2) Notifica al servidor
-        fetch(`http://localhost:3001/matches/${id}`, { method: "DELETE" })
+        fetch(`${endPointMatches}/${id}`, { method: "DELETE" })
             .then(res => {
                 if (!res.ok) throw new Error("Error al eliminar del servidor");
             })

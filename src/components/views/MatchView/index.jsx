@@ -4,6 +4,7 @@ import axios from "axios";
 import { getUser, isAuthenticated } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { MatchList } from "@/components/Core/MatchList.jsx";
+import { endPointMatches } from "@/lib/api";
 
 export const MatchView = () => {
     const [likedPets, setLikedPets] = useState([]);
@@ -24,7 +25,7 @@ export const MatchView = () => {
             if (!user?.id) return;
 
             try {
-                const { data: matches } = await axios.get("http://localhost:3001/matches");
+                const { data: matches } = await axios.get(endPointMatches);
 
                 const myLikes = matches.filter(
                     (match) => match.userId === user.id && match.liked && match.petInfo
