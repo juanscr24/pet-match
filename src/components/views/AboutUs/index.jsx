@@ -10,6 +10,7 @@ import { Textarea } from "@/components/Core/TextTarea";
 import Link from "next/link";
 
 export const AboutUsView = () => {
+    // Declaramos un Hook donde guardaremos los campos del form
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -21,7 +22,9 @@ export const AboutUsView = () => {
     };
 
     const handleSubmit = (e) => {
+        // Evita el comportamiento por defecto del formulario
         e.preventDefault();
+        // Se envia alerta al momento de enviar tu msj con exito
         alert("Gracias por tu mensaje 🐾");
         setForm({ name: "", email: "", message: "" });
     };

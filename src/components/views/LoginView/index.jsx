@@ -8,17 +8,20 @@ import { Input } from '@/components/Core/Input';
 import Link from 'next/link';
 
 export default function LoginView() {
+    // Se declaran los estados del login
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [pw, setPw] = useState('');
     const [error, setError] = useState('');
 
+    // En caso que haya usuario en el Local te lleva al Dashboard
     useEffect(() => {
         if (isAuthenticated()) {
             router.replace('/');
         }
     }, []);
 
+    // Funcion asyn para el manejo de submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');

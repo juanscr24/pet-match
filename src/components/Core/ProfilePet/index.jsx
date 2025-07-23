@@ -32,7 +32,7 @@ export const ProfilePet = () => {
                     height={100}
                     className='object-cover max-md:w-10 max-sm:hidden'
                 />
-                <Button onClick={() => setShowMenu(!showMenu)} className='absolute bg-transparent -bottom-3 -right-5 p-1 max-sm:hidden'>
+                <Button onClick={() => setShowMenu(!showMenu)} className='absolute bg-transparent -bottom-3 -right-5 p-1 max-sm:hidden hover:bg-transparent'>
                     <EditNoteIcon className='cursor-pointer text-gray-200' fontSize='inherit' />
                 </Button>
 

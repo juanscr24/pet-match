@@ -4,7 +4,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import PetsIcon from '@mui/icons-material/Pets'
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
+// Archivo con un array de rutas 
 
+// Rutas de usuarios
 export const ROUTESUSER = [
     { path: "/profile", label: "Perfil", icon:<AccountCircleIcon /> },
     { path: "/dashboard", label: "Explorar", icon: <DashboardCustomizeIcon />},
@@ -13,7 +15,7 @@ export const ROUTESUSER = [
 ]
 
 
-
+// Rutas extras en modo Admin
 export const ROUTEADMIN = [
     { path: "/admin/statistics", label: "Estadísticas", icon:<QueryStatsIcon />},
 ]
