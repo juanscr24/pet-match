@@ -14,7 +14,7 @@ export const Sidebar = () => {
     const { user } = useUser();
 
     return (
-        <aside className="flex flex-col h-[97%] w-80 justify-between rounded-2xl absolute ml-5 shadow-xl mt-3 bg-[rgba(255,255,255,0.07)]">
+        <aside className="flex flex-col max-md:hidden h-[97%] w-80 max-lg:w-72 justify-between rounded-2xl fixed ml-5 shadow-xl mt-3 bg-[rgba(255,255,255,0.07)]">
             <div className='py-10 flex gap-4 px-5 justify-center'>
                 <ProfilePet />
             </div>
@@ -35,7 +35,7 @@ export const Sidebar = () => {
                         ))}
                     </>
                 )}
-                <LinkComponent children='About Us' href='/aboutUs' icon={<InfoIcon />}/>
+                <LinkComponent children='Conócenos' href='/aboutUs' icon={<InfoIcon />}/>
             </div>
             <hr className="border-0 h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className='flex justify-between py-7 px-5'>
