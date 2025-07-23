@@ -1,35 +1,29 @@
-// src/components/views/MyPetsView/index.jsx
 "use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
-
-const API_URL = "http://localhost:3001/pets";
+import { MyPetsCardList } from "@/components/Core/MyPetsCard";
+import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
 
 export const MyPetsView = () => {
   const [myPets, setMyPets] = useState([]);
   const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    breed: "",
-    temperament: "",
-    weight: "",
-    lifeExpectancy: ""
+    name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
   });
   const [editingPetId, setEditingPetId] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
-  const currentUser = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("user")) : null;
+  const currentUser = typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
 
   const fetchPets = async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
 
-  useEffect(() => {
-    fetchPets();
-  }, []);
+  useEffect(() => { fetchPets(); }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,72 +32,76 @@ export const MyPetsView = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, age, temperament } = formData;
-    if (!name || !age || !temperament) return alert("Nombre, edad y temperamento son obligatorios");
+    const { name, age, temperament, type } = formData;
+    if (!name || !age || !temperament || !type) {
+      return alert("Nombre, edad, temperamento y tipo son obligatorios");
+    }
+
+    let imageURL = formData.image || "";
+
+    // ✅ Traer imagen aleatoria si es perro o gato
+    try {
+      if (!imageURL && type.toLowerCase() === "perro") {
+        const res = await axios.get(endPointApiDog, {
+          headers: { "x-api-key": KeyApiDog }
+        });
+        imageURL = res.data[0]?.url;
+      } else if (!imageURL && type.toLowerCase() === "gato") {
+        const res = await axios.get(endPointApiCat, {
+          headers: { "x-api-key": KeyApiCat }
+        });
+        imageURL = res.data[0]?.url;
+      }
+    } catch (err) {
+      console.error("Error al traer imagen aleatoria:", err);
+    }
+
+    const petPayload = {
+      ...formData,
+      image: imageURL,
+      userId: currentUser.id
+    };
 
     if (editingPetId) {
-      await axios.put(`${API_URL}/${editingPetId}`, { ...formData, userId: currentUser.id });
+      await axios.put(`${endPointPets}/${editingPetId}`, petPayload);
       setEditingPetId(null);
     } else {
-      const newPet = {
-        id: uuid(),
-        ...formData,
-        userId: currentUser.id
-      };
-      await axios.post(API_URL, newPet);
+      const newPet = { id: uuid(), ...petPayload };
+      await axios.post(endPointPets, newPet);
     }
-    setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "" });
-    fetchPets();
-  };
 
-  const handleDelete = async (id) => {
-    await axios.delete(`${API_URL}/${id}`);
+    setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: "" });
+    setShowForm(false);
     fetchPets();
   };
 
   const handleEdit = (pet) => {
-    setFormData({
-      name: pet.name,
-      age: pet.age,
-      breed: pet.breed,
-      temperament: pet.temperament,
-      weight: pet.weight,
-      lifeExpectancy: pet.lifeExpectancy
-    });
+    setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
+    setShowForm(true);
   };
 
-  return (
-    <div className="h-dvh" style={{ maxWidth: 500, margin: "0 auto", padding: 20 }}>
-      <h2>Mis Mascotas</h2>
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        <input name="name" value={formData.name} onChange={handleChange} placeholder="Nombre*" required />
-        <input name="age" value={formData.age} onChange={handleChange} placeholder="Edad*" required />
-        <input name="breed" value={formData.breed} onChange={handleChange} placeholder="Raza (opcional)" />
-        <input name="temperament" value={formData.temperament} onChange={handleChange} placeholder="Temperamento*" required />
-        <input name="weight" value={formData.weight} onChange={handleChange} placeholder="Peso (opcional)" />
-        <input name="lifeExpectancy" value={formData.lifeExpectancy} onChange={handleChange} placeholder="Esperanza de vida (opcional)" />
-        <button type="submit">{editingPetId ? "Actualizar" : "Registrar"} mascota</button>
-      </form>
+  const handleDelete = async (id) => {
+    await axios.delete(`${endPointPets}/${id}`);
+    fetchPets();
+  };
 
-      <div style={{ marginTop: 30 }}>
-        {myPets.length === 0 ? (
-          <p>No has registrado mascotas.</p>
-        ) : (
-          myPets.map(pet => (
-            <div key={pet.id} style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
-              <h3>{pet.name}</h3>
-              <p>Edad: {pet.age}</p>
-              <p>Raza: {pet.breed || "No registrada"}</p>
-              <p>Temperamento: {pet.temperament}</p>
-              <p>Peso: {pet.weight || "No registrado"}</p>
-              <p>Esperanza de vida: {pet.lifeExpectancy || "No registrada"}</p>
-              <button onClick={() => handleEdit(pet)}>Editar</button>
-              <button onClick={() => handleDelete(pet.id)}>Eliminar</button>
-            </div>
-          ))
-        )}
-      </div>
+  const toggleForm = () => setShowForm(prev => !prev);
+
+  return (
+    <div className='p-5 max-sm:p-8'>
+      <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
+      <MyPetsCardList
+        pets={myPets}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        showForm={showForm}
+        toggleForm={toggleForm}
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        isEditing={!!editingPetId}
+      />
     </div>
   );
 };

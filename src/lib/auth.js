@@ -32,4 +32,3 @@ export function getUser() {
 export function isAuthenticated() {
     return !!getUser();
 }
-

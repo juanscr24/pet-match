@@ -6,7 +6,8 @@
       "email": "for@gmail.com",
       "password": "12345",
       "city": "Barranquilla",
-      "role": "user"
+      "role": "user",
+      "desc": "asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf"
     },
     {
       "id": "e538",
@@ -18,11 +19,12 @@
     },
     {
       "id": "15a9",
-      "name": "Juan",
+      "name": "Juan Sebastian",
       "email": "juan@hotmail.com",
       "password": "12345",
       "city": "Barranquilla",
-      "role": "user"
+      "role": "admin",
+      "desc": ""
     },
     {
       "id": "86f2",
@@ -35,115 +37,53 @@
   ],
   "pets": [
     {
-      "id": "7e7cde4e-4958-4f71-a42d-b8217594474a",
-      "name": "dada",
-      "age": "31",
-      "breed": "",
-      "temperament": "asad",
-      "weight": "",
-      "lifeExpectancy": "",
-      "userId": "cf25"
-    }
-  ],
-  "adoptionRequests": [
+      "id": "f52fd28d-a3eb-4a05-9112-d2aeb13af66f",
+      "name": "Lobo",
+      "age": "10",
+      "breed": "Huski",
+      "temperament": "Cauteloso",
+      "weight": "20",
+      "lifeExpectancy": "12",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/LMjrDDwSJ.jpg",
+      "userId": "15a9"
+    },
     {
-      "id": "r001",
-      "petId": "p001",
-      "fromUserId": "e538",
-      "toUserId": "cf25",
-      "status": "pendiente"
+      "id": "5e3dad7b-0962-479b-9733-8f21ece393d1",
+      "name": "Michu",
+      "age": "5",
+      "breed": "Siamés",
+      "temperament": "Cauteloso",
+      "weight": "4",
+      "lifeExpectancy": "12",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/9s7.jpg",
+      "userId": "15a9"
+    },
+    {
+      "id": "c7552c7e-9620-47b2-a3f4-73322395b666",
+      "name": "Vini",
+      "age": "10",
+      "breed": "Fresh Puder",
+      "temperament": "Jugueton",
+      "weight": "10",
+      "lifeExpectancy": "12",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/6f5n_42mB.jpg",
+      "userId": "15a9"
     }
   ],
   "matches": [
     {
-      "id": "04b15154-ff6f-463b-ba4b-967b5fa6a81d",
-      "userId": "cf25",
-      "petId": "T0rXO2Pgf",
-      "liked": true
-    },
-    {
-      "id": "18e776b9-94b1-47ef-8dcc-ac4af2c443b7",
-      "userId": "cf25",
-      "petId": "SyRe4xcN7",
-      "liked": true
-    },
-    {
-      "id": "c042973f-7e6c-43dd-9a99-5a9a84fe9de7",
-      "userId": "cf25",
-      "petId": "kuvpGHCzm",
-      "liked": false
-    },
-    {
-      "id": "dce9d181-7749-4070-89f9-9a6823f2d45d",
-      "userId": "cf25",
-      "petId": "Ov_Rzma1O",
-      "liked": true
-    },
-    {
-      "id": "b82ec053-2f19-43ac-99af-70ccbc2e53b8",
-      "userId": "cf25",
-      "petId": "kuw1NLcID",
-      "liked": true
-    },
-    {
-      "id": "dd076975-ad9a-4f2c-8f35-cc0027d57fdc",
-      "userId": "cf25",
-      "petId": "jhtep75ls",
-      "liked": false
-    },
-    {
-      "id": "a697308a-6841-4c0f-85eb-0b9c55770f65",
-      "userId": "cf25",
-      "petId": "Sk4DXl54m",
-      "liked": false
-    },
-    {
-      "id": "f87a833e-cc28-4704-a03e-840a53242ec2",
-      "userId": "cf25",
-      "petId": "AXi6ABpKV",
-      "liked": false
-    },
-    {
-      "id": "30261717-f901-48a0-8f2e-866e649a0ba0",
-      "userId": "cf25",
-      "petId": "Sk67KO2rX",
-      "liked": false
-    },
-    {
-      "id": "ab1d5e7a-58e8-4af4-8f5e-bd1a3693bd10",
-      "userId": "cf25",
-      "petId": "VdUHW9aaz",
-      "liked": false
-    },
-    {
-      "id": "a4061694-3743-4084-b3aa-1e2350c1e8a1",
-      "userId": "cf25",
-      "petId": "ryHJZlcNX",
-      "liked": false
-    },
-    {
-      "id": "6a8189dd-ab69-4066-82be-c5278566afad",
-      "userId": "cf25",
-      "petId": "hCBuj4h7L",
-      "liked": true
-    },
-    {
-      "id": "cf50eea1-a711-423b-82af-cecbac823d82",
-      "userId": "cf25",
-      "petId": "0Us91px8g",
-      "liked": true
-    },
-    {
-      "id": "6146d2fb-c16c-4ba1-bacd-4d406549bb51",
-      "userId": "cf25",
-      "petId": "I4BpHSJnh",
-      "liked": false
-    },
-    {
-      "id": "63ad2706-0e72-4ea5-bf83-12c561bfc07f",
-      "userId": "cf25",
-      "petId": "r13yimo4Q",
-      "liked": false
+      "id": "e5dac0d7-93ca-4645-9ef1-14c5e10510ef",
+      "userId": "15a9",
+      "petId": null,
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/FsK9WepDe.jpg",
+        "name": "Hanna",
+        "temperament": "Juguetona"
+      }
     }
   ]
 }

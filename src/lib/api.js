@@ -1,20 +1,9 @@
-// src/lib/api.js
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+export const endPointUsers = 'http://localhost:3001/users'
+export const endPointPets = 'http://localhost:3001/pets'
+export const endPointMatches = 'http://localhost:3001/matches'
 
-export const handleMatch = async ({ userId, petId, liked }) => {
-    try {
-        const match = {
-            id: uuidv4(),
-            userId,
-            petId,
-            liked
-        };
+export const endPointApiDog = 'https://api.thedogapi.com/v1/images/search?include_breeds=1'
+export const KeyApiDog = 'live_pdv9eSLIZwqtTS7bUMYS5llFqxpttrldmTH0kLvA6dc2uJO98w9JfDKu6sPavfno'
 
-        const response = await axios.post('http://localhost:3001/matches', match);
-        console.log('✅ Match guardado:', response.data);
-    } catch (error) {
-        console.error('❌ Error guardando match:', error);
-    }
-};
-
+export const endPointApiCat = 'https://api.thecatapi.com/v1/images/search'
+export const KeyApiCat = 'live_ggIM2CZYO2RHrkgmOkMxKhxOQ0AcFMT0Pi7hnkjr7XosKb6iBj2LYc618tSNOZIX'
