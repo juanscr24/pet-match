@@ -6,7 +6,9 @@ import { MyPetsCardList } from "@/components/Core/MyPetsCard";
 import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
 import Swal from 'sweetalert2';
 
+// Se declara la Funcion de la vista
 export const MyPetsView = () => {
+  // Se declara los estados de la vista
   const [myPets, setMyPets] = useState([]);
   const [formData, setFormData] = useState({
     name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
@@ -14,16 +16,19 @@ export const MyPetsView = () => {
   const [editingPetId, setEditingPetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
+  // Se trae el user del localStorage
   const currentUser = typeof window !== "undefined"
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
+  // Se filtran las mascotas que he creado para que se rendericen en MyPetsViws
   const fetchPets = async () => {
     const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
 
+  // Se activa cuando se lanza el FetchPets
   useEffect(() => { fetchPets(); }, []);
 
   const handleChange = (e) => {
@@ -31,6 +36,7 @@ export const MyPetsView = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Se declara la funcion que manejara el Form
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, age, temperament, type } = formData;
@@ -57,15 +63,21 @@ export const MyPetsView = () => {
       console.error("Error al traer imagen aleatoria:", err);
     }
 
+    // Traen todo lo que guardo el formulario adicional guarde la imagen y userId
     const petPayload = {
       ...formData,
       image: imageURL,
       userId: currentUser.id
     };
 
+    // Se valida si existe
     if (editingPetId) {
+      // Se trae el endpoint para hacer un Put, o actualizar
       await axios.put(`${endPointPets}/${editingPetId}`, petPayload);
+      // Se reincian los estados
       setEditingPetId(null);
+
+      // En caso que no tenga, se crea un nuevo objeto
     } else {
       const newPet = { id: uuid(), ...petPayload };
       await axios.post(endPointPets, newPet);
@@ -76,12 +88,14 @@ export const MyPetsView = () => {
     fetchPets();
   };
 
+  // Funcion para editar la mascota
   const handleEdit = (pet) => {
     setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
     setShowForm(true);
   };
 
+  // Funcion para eliminar la mascota
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: '¿Estás seguro?',
@@ -94,6 +108,7 @@ export const MyPetsView = () => {
       cancelButtonColor: '#3085d6',
     });
 
+    // Aqui se confirma si deseas eliminar la mascota 
     if (result.isConfirmed) {
       await axios.delete(`${endPointPets}/${id}`);
       fetchPets();
@@ -101,11 +116,12 @@ export const MyPetsView = () => {
     }
   };
 
+  // Se alterna el estado del Form
   const toggleForm = () => setShowForm(prev => !prev);
 
   return (
     <div className='p-5 max-sm:p-8'>
-      <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-200 max-sm:text-center">Mis Mascotas</h2>
       <MyPetsCardList
         pets={myPets}
         onEdit={handleEdit}

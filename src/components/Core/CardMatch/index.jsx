@@ -3,6 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Button } from "@/components/Core/Button";
 
 export const CardMatch = ({ pet, onDelete }) => {
+    // Se crea la CardMatch para luego ser renderizada en la vista de MatchView
     return (
         <div className="relative h-[410px] max-xl:h-[350px] max-sm:h-[410px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group">
             <img

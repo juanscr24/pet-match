@@ -5,18 +5,22 @@ import { Button } from '../Button';
 import { endPointApiDog, endPointApiCat, endPointMatches, KeyApiDog, KeyApiCat, endPointPets } from '@/lib/api';
 
 export default function DogCard() {
+    // Se declaran todos los estados que tendra la DogCard
     const [customPets, setCustomPets] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [apiPet, setApiPet] = useState(null);
     const [isCatTurn, setIsCatTurn] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    // Se busca cual es el usuario actual que esta en el local storage
     const currentUser = typeof window !== "undefined"
         ? JSON.parse(localStorage.getItem("user"))
         : null;
 
+    // Se declara una nueva variable por ID
     const currentUserId = currentUser?.id;
 
+    // Se buscan las mascotas por ID en caso de no encontrar lanza error
     const fetchCustomPets = async () => {
         try {
             const response = await axios.get(`${endPointPets}?userId=${currentUserId}`);
@@ -26,6 +30,7 @@ export default function DogCard() {
         }
     };
 
+    // Aqui se traera la Api Dog con su respectiva llave
     const fetchApiDog = async () => {
         try {
             const res = await axios.get(endPointApiDog, {
@@ -38,6 +43,7 @@ export default function DogCard() {
         }
     };
 
+    // Se traera la Api Cat con su respectiva llave
     const fetchApiCat = async () => {
         try {
             const res = await axios.get(endPointApiCat, {
@@ -50,6 +56,7 @@ export default function DogCard() {
         }
     };
 
+    // Le decimos que busque la siguiente mascota y que vaya intercambio entre ApiCat y ApiDog
     const fetchNextPet = async () => {
         setLoading(true);
         try {
@@ -68,6 +75,7 @@ export default function DogCard() {
         }
     };
 
+    // Se ejecuta una vez el Fetch se activa
     useEffect(() => {
         fetchCustomPets();
     }, []);
@@ -78,6 +86,7 @@ export default function DogCard() {
         }
     }, [customPets]);
 
+    // funcion asyn donde se manejara el link, diciendo que lo guarde en el EndPoint del Json Server
     const handleLike = async () => {
         if (!apiPet?.id) return;
 
@@ -97,16 +106,18 @@ export default function DogCard() {
         } catch (err) {
             console.error("Error guardando like:", err);
         }
-
+        // Se ejecuta la funcion
         fetchNextPet();
     };
 
+    // En el caso que le de dislike, pasa a la siguiente mascota
     const handleDislike = () => {
         fetchNextPet();
     };
-
+    
+    // En el caso se quede cargando o no llegue la Api queda cargando
     if (loading || !apiPet) {
-        return <p className="text-center text-gray-600">Cargando peludito...</p>;
+        return <p className="text-center text-gray-200">Cargando peludito...</p>;
     }
 
     const breed = apiPet.breeds?.[0];

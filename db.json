@@ -59,18 +59,6 @@
       "type": "gato",
       "image": "https://cdn2.thecatapi.com/images/9s7.jpg",
       "userId": "15a9"
-    },
-    {
-      "id": "c7552c7e-9620-47b2-a3f4-73322395b666",
-      "name": "Vini",
-      "age": "10",
-      "breed": "Fresh Puder",
-      "temperament": "Jugueton",
-      "weight": "10",
-      "lifeExpectancy": "12",
-      "type": "perro",
-      "image": "https://cdn2.thedogapi.com/images/6f5n_42mB.jpg",
-      "userId": "15a9"
     }
   ],
   "matches": [
@@ -116,6 +104,28 @@
         "url": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
         "name": "Hanna",
         "temperament": "Jugueton"
+      }
+    },
+    {
+      "id": "05799a40-0a7c-4d27-b01a-5531696372e1",
+      "userId": "15a9",
+      "petId": "XcoqcsVzT",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thecatapi.com/images/XcoqcsVzT.jpg",
+        "name": "Cornish Rex",
+        "temperament": "Affectionate, Intelligent, Active, Curious, Playful"
+      }
+    },
+    {
+      "id": "e3470e55-4c7f-497c-b270-953ca38a49c9",
+      "userId": "15a9",
+      "petId": "Fw1MZmoRL",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/Fw1MZmoRL.png",
+        "name": "Saint Bernard",
+        "temperament": "Friendly, Lively, Gentle, Watchful, Calm"
       }
     }
   ]
