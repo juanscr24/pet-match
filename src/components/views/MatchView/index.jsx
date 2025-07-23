@@ -50,7 +50,7 @@ export const MatchView = () => {
     if (!user) return null;
 
     return (
-        <div className='p-5'>
+        <div className='p-5 max-sm:px-8'>
             <h2 className="text-xl font-bold mb-4 text-gray-200">Mascotas que te gustaron</h2>
             <MatchList pets={likedPets} />
         </div>

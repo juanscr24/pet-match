@@ -27,7 +27,7 @@ export const AboutUsView = () => {
     };
 
     return (
-        <div className="min-h-screen text-white px-6 py-10 sm:px-10 md:px-20 flex justify-center items-center">
+        <div className="min-h-screen text-white px-5 max-lg:px-3 py-5 flex justify-center items-center">
             <div className="bg-black/40 backdrop-blur-xl rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl w-full space-y-10">
                 <h1 className="text-xl md:text-xl font-bold text-center text-white tracking-wide">
                     Sobre Nosotros

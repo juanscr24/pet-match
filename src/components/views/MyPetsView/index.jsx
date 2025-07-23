@@ -64,7 +64,7 @@ export const MyPetsView = () => {
   const toggleForm = () => setShowForm(prev => !prev);
 
   return (
-    <div className='p-5'>
+    <div className='p-5 max-sm:p-8'>
       <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
         <MyPetsCardList
           pets={myPets}

@@ -16,14 +16,14 @@ export const MyPetsCardList = ({
 }) => {
     return (
         <div >
-            <div className="grid grid-cols-5 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 gap-5">
+            <div className="grid grid-cols-5 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-5">
                 {pets.length === 0 ? (
                     <p className="text-gray-200">No has registrado mascotas.</p>
                 ) : (
                     pets.map((pet) => (
                         <div
                             key={pet.id}
-                            className="relative h-[410px] max-xl:h-[350px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group"
+                            className="relative h-[410px] max-xl:h-[350px] max-sm:h-[410px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group"
                         >
                             <img
                                 src={
