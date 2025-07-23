@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { Button } from '../Button';
 
 const images = [
     '/img/profile/dog-1.webp',
@@ -18,7 +19,7 @@ export const ProfilePet = () => {
     };
 
     return (
-        <div className='flex flex-col gap-8 justify-center items-center -mb-14'>
+        <div className='flex flex-col gap-8 justify-center items-center -mb-14 max-md:flex-row max-md:mb-0'>
             <div className='flex gap-2 items-center'>
                 <h1 className="text-xl font-bold text-gray-200">PetMatch</h1>
             </div>
@@ -29,11 +30,11 @@ export const ProfilePet = () => {
                     src={selectedImage}
                     width={100}
                     height={100}
-                    className='object-cover'
+                    className='object-cover max-md:w-10 max-sm:hidden'
                 />
-                <button onClick={() => setShowMenu(!showMenu)} className='absolute -bottom-3 -right-3 p-1'>
-                    <EditNoteIcon className='cursor-pointer text-gray-200' fontSize='small' />
-                </button>
+                <Button onClick={() => setShowMenu(!showMenu)} className='absolute bg-transparent -bottom-3 -right-5 p-1 max-sm:hidden'>
+                    <EditNoteIcon className='cursor-pointer text-gray-200' fontSize='inherit' />
+                </Button>
 
                 {showMenu && (
                     <div className='grid grid-cols-3 absolute top-full mt-2 bg-gray-200 shadow-lg rounded-lg p-2 w-[150px] gap-2 z-10'>

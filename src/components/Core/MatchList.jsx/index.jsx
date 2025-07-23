@@ -31,7 +31,7 @@ export function MatchList() {
     };
 
     return (
-        <div className="grid grid-cols-5 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 gap-5">
+        <div className="grid grid-cols-5 max-2xl:grid-cols-4 max-xl:grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-5">
             {matches.map(match => (
                 <CardMatch
                     key={match.id}

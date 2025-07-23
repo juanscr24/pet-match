@@ -18,9 +18,9 @@ export const User = () => {
 
     if (!user) return null; // espera que cargue el user
     return (
-        <Link href="/profile">
+        <Link href="/profile" className='max-sm:hidden'>
             <div className='flex items-center gap-2'>
-                <AccountCircleIcon sx={{ fontSize: 40, }} className='text-gray-200' />
+                <AccountCircleIcon sx={{ fontSize: 40 }} className='text-gray-200' />
                 <h1 className='text-gray-200'>{user.name}</h1>
             </div>
         </Link>

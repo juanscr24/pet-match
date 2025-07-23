@@ -4,7 +4,7 @@ import { Button } from "@/components/Core/Button";
 
 export const CardMatch = ({ pet, onDelete }) => {
     return (
-        <div className="relative h-[410px] max-xl:h-[350px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group">
+        <div className="relative h-[410px] max-xl:h-[350px] max-sm:h-[410px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group">
             {/* Botón para eliminar */}
 
             {/* Imagen */}

@@ -44,7 +44,7 @@ export const StatisticsView = () => {
     return (
         <div className="p-6 max-w-5xl mx-auto">
             <h2 className="text-xl font-bold mb-6 text-center text-gray-200">Estadísticas de PetMatch</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:grid-cols-2">
 
                 <StatsCard title="Usuarios registrados" value={users.length} Icon={GroupIcon} />
                 <StatsCard title="Mascotas registradas" value={pets.length} Icon={PetsIcon} />
