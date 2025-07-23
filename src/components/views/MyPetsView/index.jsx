@@ -4,6 +4,7 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
 import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
+import Swal from 'sweetalert2';
 
 export const MyPetsView = () => {
   const [myPets, setMyPets] = useState([]);
@@ -82,8 +83,22 @@ export const MyPetsView = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`${endPointPets}/${id}`);
-    fetchPets();
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta mascota será eliminada!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    });
+
+    if (result.isConfirmed) {
+      await axios.delete(`${endPointPets}/${id}`);
+      fetchPets();
+      Swal.fire('Eliminado', 'La mascota ha sido eliminada.', 'success');
+    }
   };
 
   const toggleForm = () => setShowForm(prev => !prev);

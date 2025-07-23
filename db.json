@@ -84,6 +84,39 @@
         "name": "Hanna",
         "temperament": "Juguetona"
       }
+    },
+    {
+      "id": "cc061ee5-72dc-48f5-85a9-deef488ff959",
+      "userId": "cf25",
+      "petId": "RG55aK2bn",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/RG55aK2bn.jpg",
+        "name": "American Eskimo Dog (Miniature)",
+        "temperament": "Friendly, Alert, Reserved, Intelligent, Protective"
+      }
+    },
+    {
+      "id": "fd0af0ee-31ee-477d-814c-8db1dbe5c98f",
+      "userId": "cf25",
+      "petId": "O9aaUjez3",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/O9aaUjez3.jpg",
+        "name": "Tibetan Terrier",
+        "temperament": "Affectionate, Energetic, Amiable, Reserved, Gentle, Sensitive"
+      }
+    },
+    {
+      "id": "584d9b49-611b-4a40-a0a5-6637907b6ee0",
+      "userId": "cf25",
+      "petId": null,
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
+        "name": "Hanna",
+        "temperament": "Jugueton"
+      }
     }
   ]
 }

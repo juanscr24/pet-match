@@ -5,6 +5,7 @@ import { getUser, isAuthenticated } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { MatchList } from "@/components/Core/MatchList.jsx";
 import { endPointMatches } from "@/lib/api";
+import Swal from 'sweetalert2';
 
 export const MatchView = () => {
     const [likedPets, setLikedPets] = useState([]);
@@ -45,11 +46,35 @@ export const MatchView = () => {
     };
 
     const handleDeleteMatch = async (matchId) => {
-        try {
-            await axios.delete(`${endPointMatches}/${matchId}`);
-            setLikedPets(prev => prev.filter(pet => pet.matchId !== matchId));
-        } catch (error) {
-            console.error("Error eliminando el match:", error);
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¡Este match será eliminado!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`${endPointMatches}/${matchId}`);
+                setLikedPets(prev => prev.filter(pet => pet.matchId !== matchId));
+
+                Swal.fire(
+                    'Eliminado',
+                    'El match ha sido eliminado con éxito.',
+                    'success'
+                );
+            } catch (error) {
+                console.error("Error eliminando el match:", error);
+                Swal.fire(
+                    'Error',
+                    'Ocurrió un problema al eliminar el match.',
+                    'error'
+                );
+            }
         }
     };
 
