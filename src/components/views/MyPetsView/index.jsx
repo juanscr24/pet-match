@@ -3,26 +3,32 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
-import { endPointPets } from "@/lib/api";
+import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
+import Swal from 'sweetalert2';
 
+// Se declara la Funcion de la vista
 export const MyPetsView = () => {
+  // Se declara los estados de la vista
   const [myPets, setMyPets] = useState([]);
   const [formData, setFormData] = useState({
-    name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: ""
+    name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
   });
   const [editingPetId, setEditingPetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
+  // Se trae el user del localStorage
   const currentUser = typeof window !== "undefined"
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
+  // Se filtran las mascotas que he creado para que se rendericen en MyPetsViws
   const fetchPets = async () => {
     const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
 
+  // Se activa cuando se lanza el FetchPets
   useEffect(() => { fetchPets(); }, []);
 
   const handleChange = (e) => {
@@ -30,6 +36,7 @@ export const MyPetsView = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Se declara la funcion que manejara el Form
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, age, temperament, type } = formData;
@@ -37,46 +44,95 @@ export const MyPetsView = () => {
       return alert("Nombre, edad, temperamento y tipo son obligatorios");
     }
 
+    let imageURL = formData.image || "";
+
+    // ✅ Traer imagen aleatoria si es perro o gato
+    try {
+      if (!imageURL && type.toLowerCase() === "perro") {
+        const res = await axios.get(endPointApiDog, {
+          headers: { "x-api-key": KeyApiDog }
+        });
+        imageURL = res.data[0]?.url;
+      } else if (!imageURL && type.toLowerCase() === "gato") {
+        const res = await axios.get(endPointApiCat, {
+          headers: { "x-api-key": KeyApiCat }
+        });
+        imageURL = res.data[0]?.url;
+      }
+    } catch (err) {
+      console.error("Error al traer imagen aleatoria:", err);
+    }
+
+    // Traen todo lo que guardo el formulario adicional guarde la imagen y userId
+    const petPayload = {
+      ...formData,
+      image: imageURL,
+      userId: currentUser.id
+    };
+
+    // Se valida si existe
     if (editingPetId) {
-      await axios.put(`${endPointPets}/${editingPetId}`, { ...formData, userId: currentUser.id });
+      // Se trae el endpoint para hacer un Put, o actualizar
+      await axios.put(`${endPointPets}/${editingPetId}`, petPayload);
+      // Se reincian los estados
       setEditingPetId(null);
+
+      // En caso que no tenga, se crea un nuevo objeto
     } else {
-      const newPet = { id: uuid(), ...formData, userId: currentUser.id };
+      const newPet = { id: uuid(), ...petPayload };
       await axios.post(endPointPets, newPet);
     }
 
-    setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "" });
+    setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: "" });
     setShowForm(false);
     fetchPets();
   };
 
+  // Funcion para editar la mascota
   const handleEdit = (pet) => {
     setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
     setShowForm(true);
   };
 
+  // Funcion para eliminar la mascota
   const handleDelete = async (id) => {
-    await axios.delete(`${endPointPets}/${id}`);
-    fetchPets();
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta mascota será eliminada!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    });
+
+    // Aqui se confirma si deseas eliminar la mascota 
+    if (result.isConfirmed) {
+      await axios.delete(`${endPointPets}/${id}`);
+      fetchPets();
+      Swal.fire('Eliminado', 'La mascota ha sido eliminada.', 'success');
+    }
   };
 
+  // Se alterna el estado del Form
   const toggleForm = () => setShowForm(prev => !prev);
 
   return (
     <div className='p-5 max-sm:p-8'>
-      <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
-        <MyPetsCardList
-          pets={myPets}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-          showForm={showForm}
-          toggleForm={toggleForm}
-          formData={formData}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          isEditing={!!editingPetId}
-        />
+      <h2 className="text-xl font-bold mb-4 text-gray-200 max-sm:text-center">Mis Mascotas</h2>
+      <MyPetsCardList
+        pets={myPets}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        showForm={showForm}
+        toggleForm={toggleForm}
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        isEditing={!!editingPetId}
+      />
     </div>
   );
 };

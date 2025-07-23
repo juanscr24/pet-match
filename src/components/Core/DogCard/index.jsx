@@ -2,115 +2,155 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../Button';
-import { endPointApiDog, endPointMatches, KeyApiDog } from '@/lib/api';
+import { endPointApiDog, endPointApiCat, endPointMatches, KeyApiDog, KeyApiCat, endPointPets } from '@/lib/api';
 
 export default function DogCard() {
-    const [dog, setDog] = useState(null);
+    // Se declaran todos los estados que tendra la DogCard
+    const [customPets, setCustomPets] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [apiPet, setApiPet] = useState(null);
+    const [isCatTurn, setIsCatTurn] = useState(false);
     const [loading, setLoading] = useState(true);
-    const currentUserId = 'cf25'; // <- luego hazlo dinámico según tu auth
 
-    const fetchDog = async () => {
+    // Se busca cual es el usuario actual que esta en el local storage
+    const currentUser = typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("user"))
+        : null;
+
+    // Se declara una nueva variable por ID
+    const currentUserId = currentUser?.id;
+
+    // Se buscan las mascotas por ID en caso de no encontrar lanza error
+    const fetchCustomPets = async () => {
+        try {
+            const response = await axios.get(`${endPointPets}?userId=${currentUserId}`);
+            setCustomPets(response.data);
+        } catch (error) {
+            console.error('Error cargando mascotas creadas:', error);
+        }
+    };
+
+    // Aqui se traera la Api Dog con su respectiva llave
+    const fetchApiDog = async () => {
+        try {
+            const res = await axios.get(endPointApiDog, {
+                headers: { 'x-api-key': KeyApiDog }
+            });
+            return res.data[0];
+        } catch (err) {
+            console.error("Error con Dog API:", err);
+            return null;
+        }
+    };
+
+    // Se traera la Api Cat con su respectiva llave
+    const fetchApiCat = async () => {
+        try {
+            const res = await axios.get(endPointApiCat, {
+                headers: { 'x-api-key': KeyApiCat }
+            });
+            return res.data[0];
+        } catch (err) {
+            console.error("Error con Cat API:", err);
+            return null;
+        }
+    };
+
+    // Le decimos que busque la siguiente mascota y que vaya intercambio entre ApiCat y ApiDog
+    const fetchNextPet = async () => {
         setLoading(true);
         try {
-            let dogData = null;
-            let attempts = 0;
-
-            while (!dogData?.breeds?.[0] && attempts < 10) {
-                const response = await axios.get(
-                    endPointApiDog,
-                    {
-                        headers: {
-                            'x-api-key': KeyApiDog,
-                        },
-                    }
-                );
-                dogData = response.data[0];
-                attempts++;
+            if (currentIndex < customPets.length) {
+                setApiPet(customPets[currentIndex]);
+                setCurrentIndex(prev => prev + 1);
+            } else {
+                const petData = isCatTurn ? await fetchApiCat() : await fetchApiDog();
+                setApiPet(petData);
+                setIsCatTurn(prev => !prev);
             }
-
-            setDog(dogData);
         } catch (error) {
-            console.error('Error fetching dog:', error);
+            console.error("Error obteniendo mascota:", error);
         } finally {
             setLoading(false);
         }
     };
 
+    // Se ejecuta una vez el Fetch se activa
     useEffect(() => {
-        fetchDog();
+        fetchCustomPets();
     }, []);
 
+    useEffect(() => {
+        if (customPets.length || currentIndex > 0) {
+            fetchNextPet();
+        }
+    }, [customPets]);
+
+    // funcion asyn donde se manejara el link, diciendo que lo guarde en el EndPoint del Json Server
     const handleLike = async () => {
-        if (!dog?.id) return;
+        if (!apiPet?.id) return;
 
         try {
             await axios.post(endPointMatches, {
                 id: crypto.randomUUID(),
                 userId: currentUserId,
-                petId: dog.id,
+                petId: apiPet.id,
                 liked: true,
                 petInfo: {
-                    url: dog.url,
-                    name: dog.breeds?.[0]?.name || 'Desconocido',
-                    temperament: dog.breeds?.[0]?.temperament || 'N/A'
+                    url: apiPet.url || apiPet.image || 'img/fallback.jpg',
+                    name: apiPet.name || apiPet.breeds?.[0]?.name || 'Desconocido',
+                    temperament: apiPet.temperament || apiPet.breeds?.[0]?.temperament || 'N/A'
                 }
             });
-
-            console.log('Like guardado!');
-        } catch (error) {
-            console.error('Error guardando like:', error);
+            console.log("Like guardado!");
+        } catch (err) {
+            console.error("Error guardando like:", err);
         }
-
-        fetchDog(); // cargar el siguiente perrito
+        // Se ejecuta la funcion
+        fetchNextPet();
     };
 
+    // En el caso que le de dislike, pasa a la siguiente mascota
     const handleDislike = () => {
-        fetchDog(); // simplemente pasa al siguiente perro
+        fetchNextPet();
     };
-
-    if (loading || !dog) {
-        return <p className="text-center text-gray-600">Cargando peludito...</p>;
+    
+    // En el caso se quede cargando o no llegue la Api queda cargando
+    if (loading || !apiPet) {
+        return <p className="text-center text-gray-200">Cargando peludito...</p>;
     }
 
-    const breed = dog.breeds?.[0];
+    const breed = apiPet.breeds?.[0];
 
     return (
         <div className="relative max-w-lg h-[65%] w-full rounded-2xl overflow-hidden shadow-2xl text-white font-sans group">
             <img
-                src={dog.url}
-                alt={breed?.name || 'Perro'}
+                src={apiPet.image || apiPet.url || 'img/fallback.jpg'}
+                alt={apiPet.name || breed?.name || 'Desconocido'}
                 className="w-full h-[100%] object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-6 pt-40 pb-6 flex flex-col justify-end">
-                <h2 className="text-3xl font-bold">{breed?.name}</h2>
-
+                <h2 className="text-3xl font-bold">{apiPet.name || breed?.name || 'Desconocido'}</h2>
                 <div className="mt-2 text-sm space-y-1">
                     <p>
                         <span className="font-semibold text-gray-300">Temperamento:</span>{' '}
-                        {breed.temperament || 'No disponible'}
+                        {apiPet.temperament || breed?.temperament || 'No disponible'}
                     </p>
                     <p>
                         <span className="font-semibold text-gray-300">Peso:</span>{' '}
-                        {breed.weight?.metric || 'No disponible'} kg
+                        {breed?.weight?.metric || 'No disponible'} kg
                     </p>
                     <p>
                         <span className="font-semibold text-gray-300">País:</span>{' '}
-                        {breed.country_code || 'No disponible'}
+                        {breed?.country_code || 'No disponible'}
                     </p>
                 </div>
-
                 <div className="flex justify-around gap-6 mt-5">
-                    <Button
-                        onClick={handleDislike}
-                        className="bg-red-500/50 hover:bg-red-500/70 flex justify-center text-white p-3 rounded-full text-xl shadow-md"
-                    >
-                        <img width={45} src="img/sad.webp" alt="Sad Dog" />
+                    <Button onClick={handleDislike} className="bg-red-500/50 hover:bg-red-500/70 p-3 flex justify-center rounded-full">
+                        <img width={45} src="img/sad.webp" alt="Dislike" />
                     </Button>
-                    <Button
-                        onClick={handleLike}
-                        className="bg-green-500/50 hover:bg-green-500/70 flex justify-center text-white p-3 rounded-full text-xl shadow-md"
-                    >
-                        <img width={45} src="img/smile.webp" alt="Smile Dog" />
+                    <Button onClick={handleLike} className="bg-green-500/50 hover:bg-green-500/70 p-3 flex justify-center rounded-full">
+                        <img width={45} src="img/smile.webp" alt="Like" />
                     </Button>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import api from './axios';
 
+// Logica del login
 export async function login({ email, password }) {
     try {
         const res = await api.get(`/users`, {
@@ -18,17 +19,19 @@ export async function login({ email, password }) {
     }
 }
 
+// logica del Cerrar Sesion
 export function logout() {
     localStorage.removeItem('user');
     window.location.href = '/login'; 
 }
 
-
+// Funcion para obtener Usuario activo en el Local Storage
 export function getUser() {
     if (typeof window === 'undefined') return null;
     return JSON.parse(localStorage.getItem('user'));
 }
 
+// Funcion de Autentificacion 
 export function isAuthenticated() {
     return !!getUser();
 }
