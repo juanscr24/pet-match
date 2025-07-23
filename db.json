@@ -37,159 +37,52 @@
   ],
   "pets": [
     {
-      "id": "79e2f8a5-3003-4a32-8b29-b352447e519a",
-      "name": "Michu",
-      "age": "5",
-      "breed": "Siamés",
-      "temperament": "Tranquilo",
-      "weight": "9 ",
-      "lifeExpectancy": "14",
-      "type": "gato",
-      "userId": "cf25"
-    },
-    {
-      "id": "46495a59-1eeb-4d86-837b-478867fe858c",
-      "name": "Hanna",
-      "age": "12",
-      "breed": "Beagle",
-      "temperament": "Juguetona, Tranquila",
-      "weight": "5",
-      "lifeExpectancy": "14",
+      "id": "f52fd28d-a3eb-4a05-9112-d2aeb13af66f",
+      "name": "Lobo",
+      "age": "10",
+      "breed": "Huski",
+      "temperament": "Cauteloso",
+      "weight": "20",
+      "lifeExpectancy": "12",
       "type": "perro",
-      "userId": "cf25"
-    },
-    {
-      "id": "f6a870f9-7172-4921-8a9c-54b4083b7364",
-      "name": "Daniel",
-      "age": "24",
-      "breed": "",
-      "temperament": "Bravo",
-      "weight": "",
-      "lifeExpectancy": "",
-      "type": "gato",
-      "userId": "cf25"
-    },
-    {
-      "id": "fb27122f-ad76-462d-910e-a2ffd36a3bea",
-      "name": "Hanna",
-      "age": "12",
-      "breed": "Beagle",
-      "temperament": "Tranquila, juguetona",
-      "weight": "10",
-      "lifeExpectancy": "14",
-      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/LMjrDDwSJ.jpg",
       "userId": "15a9"
     },
     {
-      "id": "0b54c582-6023-4539-8f12-8dbc0ce0b2b2",
-      "name": "Vini",
+      "id": "5e3dad7b-0962-479b-9733-8f21ece393d1",
+      "name": "Michu",
       "age": "5",
-      "breed": "Siberiano",
+      "breed": "Siamés",
+      "temperament": "Cauteloso",
+      "weight": "4",
+      "lifeExpectancy": "12",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/9s7.jpg",
+      "userId": "15a9"
+    },
+    {
+      "id": "c7552c7e-9620-47b2-a3f4-73322395b666",
+      "name": "Vini",
+      "age": "10",
+      "breed": "Fresh Puder",
       "temperament": "Jugueton",
-      "weight": "12",
-      "lifeExpectancy": "14",
+      "weight": "10",
+      "lifeExpectancy": "12",
       "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/6f5n_42mB.jpg",
       "userId": "15a9"
     }
   ],
   "matches": [
     {
-      "id": "edf9be6c-97a4-456b-8cc7-142877d1659a",
-      "userId": "cf25",
-      "petId": "BkE6Wg5E7",
+      "id": "e5dac0d7-93ca-4645-9ef1-14c5e10510ef",
+      "userId": "15a9",
+      "petId": null,
       "liked": true,
       "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/BkE6Wg5E7_1280.jpg",
-        "name": "Dutch Shepherd",
-        "temperament": "Reliable, Affectionate, Alert, Loyal, Obedient, Trainable"
-      }
-    },
-    {
-      "id": "0249d8cb-61ab-49b4-8cb5-86c6c385e2a4",
-      "userId": "cf25",
-      "petId": "dW5UucTIW",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/dW5UucTIW.jpg",
-        "name": "Alaskan Malamute",
-        "temperament": "Friendly, Affectionate, Devoted, Loyal, Dignified, Playful"
-      }
-    },
-    {
-      "id": "583aa6de-1405-44ab-9439-7a70c6d6ea88",
-      "userId": "cf25",
-      "petId": "4UKTN_dQ5",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/4UKTN_dQ5.jpg",
-        "name": "Border Collie",
-        "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent"
-      }
-    },
-    {
-      "id": "0b291628-26f1-417f-a45e-2e105b6c7f0f",
-      "userId": "cf25",
-      "petId": "ooXgHah90",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/ooXgHah90.jpg",
-        "name": "Kooikerhondje",
-        "temperament": "Benevolent, Agile, Alert, Intelligent, Active, Territorial"
-      }
-    },
-    {
-      "id": "6fa9054e-cf68-46d3-bf02-922392b5380e",
-      "userId": "cf25",
-      "petId": "keAvlc5KL",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/keAvlc5KL.jpg",
-        "name": "Shiba Inu",
-        "temperament": "Charming, Fearless, Keen, Alert, Confident, Faithful"
-      }
-    },
-    {
-      "id": "a08fa0f4-55bc-41e2-8e7f-ddc5a5472f50",
-      "userId": "cf25",
-      "petId": "lNnWNU4qU",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/lNnWNU4qU.jpg",
-        "name": "Airedale Terrier",
-        "temperament": "Outgoing, Friendly, Alert, Confident, Intelligent, Courageous"
-      }
-    },
-    {
-      "id": "47dfd538-11f2-47b6-801b-6644ad222c16",
-      "userId": "cf25",
-      "petId": "nLsDKdQvR",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/nLsDKdQvR.jpg",
-        "name": "Kooikerhondje",
-        "temperament": "Benevolent, Agile, Alert, Intelligent, Active, Territorial"
-      }
-    },
-    {
-      "id": "edbd1124-94e1-4947-9733-86d0be31c5d5",
-      "userId": "cf25",
-      "petId": "8jjWfmjNt",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/8jjWfmjNt.jpg",
-        "name": "American Eskimo Dog (Miniature)",
-        "temperament": "Friendly, Alert, Reserved, Intelligent, Protective"
-      }
-    },
-    {
-      "id": "bfc46b5d-8618-4d81-ac27-0aaee872141c",
-      "userId": "cf25",
-      "petId": "_LWIQOpXG",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/_LWIQOpXG.jpg",
-        "name": "Shiba Inu",
-        "temperament": "Charming, Fearless, Keen, Alert, Confident, Faithful"
+        "url": "https://cdn2.thedogapi.com/images/FsK9WepDe.jpg",
+        "name": "Hanna",
+        "temperament": "Juguetona"
       }
     }
   ]
