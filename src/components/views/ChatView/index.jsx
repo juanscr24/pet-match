@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { endPointChats, endPointUsers } from "@/lib/api";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { Button } from "@/components/Core/Button";
 
 export const ChatView = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -73,40 +75,42 @@ export const ChatView = () => {
     };
 
     if (!currentUser) {
-        return <div className="text-center mt-10 text-gray-600">Cargando usuario...</div>;
+        return <div className="text-center mt-10 text-white">Cargando usuario...</div>;
     }
 
     return (
-        <div className="flex h-[80vh] border rounded-lg overflow-hidden shadow-lg mt-4">
+        <div className="flex max-sm:flex-col p-5 gap-1 text-white h-[100%] justify-center items-center">
             {/* Lista de usuarios */}
-            <div className="w-1/3 bg-gray-100 border-r p-4 overflow-y-auto">
-                <h2 className="text-lg font-semibold mb-4">Mis Chats</h2>
+            <div className="overflow-y-auto w-[30%] max-xl:w-[40%] px-3 max-lg:w-[60%] gap-2 max-sm:w-full max-sm:h-44 max-sm:pb-5 rounded-lg flex flex-col items-center shadow-xl pt-3 bg-black/40 h-[100%]">
+                <h2 className="text-lg font-semibold">Chats</h2>
                 {getChatUsers().map(user => (
                     <div
                         key={user.id}
                         onClick={() => setReceiver(user)}
-                        className={`cursor-pointer p-2 rounded hover:bg-blue-200 transition ${receiver?.id === user.id ? "bg-blue-300 font-bold" : ""
+                        className={`cursor-pointer rounded w-full flex gap-2 p-2 hover:bg-white/50 transition ${receiver?.id === user.id ? "bg-white/30 font-bold w-[90%]" : ""
                             }`}
                     >
+                        <AccountCircleIcon />
                         {user.name}
                     </div>
                 ))}
             </div>
 
             {/* Mensajes */}
-            <div className="w-2/3 flex flex-col">
+            <div className="flex flex-col w-[100%] rounded-lg gap-1 h-[100%]">
                 {receiver ? (
                     <>
-                        <div className="bg-white p-4 border-b font-semibold text-lg">
-                            Chat con {receiver.name}
+                        <div className="shadow-xl bg-black/40 font-semibold text-lg rounded-lg p-3 flex gap-2 items-center">
+                            <AccountCircleIcon />
+                            {receiver.name}
                         </div>
-                        <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-2">
+                        <div className="overflow-y-auto shadow-xl bg-black/40 space-y-2 rounded-lg py-2 px-4 h-[100%]">
                             {getMessagesWithUser(receiver.id).map(msg => (
                                 <div
                                     key={msg.id}
-                                    className={`max-w-xs px-3 py-2 rounded-lg ${msg.senderId === currentUser.id
-                                            ? "bg-blue-500 text-white ml-auto"
-                                            : "bg-gray-300 text-black"
+                                    className={`max-w-xs max-lg:w-[70%] max-sm:w-[80%] rounded-lg ${msg.senderId === currentUser.id
+                                            ? "bg-blue-500 text-white ml-auto py-1 px-2"
+                                            : "bg-gray-300 text-black py-1 px-2"
                                         }`}
                                 >
                                     {msg.message}
@@ -116,25 +120,26 @@ export const ChatView = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="p-3 border-t flex items-center gap-2 bg-white">
+                        <div className="p-2 flex items-center gap-2 shadow-xl bg-black/40 rounded-lg">
                             <input
                                 type="text"
-                                className="flex-1 border rounded-lg px-3 py-2"
+                                className="flex-1 outline-none rounded-lg p-1"
                                 placeholder="Escribe un mensaje..."
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                             />
-                            <button
+                            <Button
+                                fit
                                 onClick={sendMessage}
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+                                className="bg-white/30 hover:bg-white/50 text-white rounded-md p-2"
                             >
                                 Enviar
-                            </button>
+                            </Button>
                         </div>
                     </>
                 ) : (
-                    <div className="flex-1 flex items-center justify-center text-gray-500">
+                    <div className="flex-1 flex items-center justify-center text-white">
                         Selecciona un chat para empezar
                     </div>
                 )}

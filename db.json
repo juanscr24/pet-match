@@ -33,6 +33,14 @@
       "password": "123",
       "city": "barranquilla",
       "role": "user"
+    },
+    {
+      "id": "27e6",
+      "name": "Fundación de animales",
+      "email": "fundacion@gmail.com",
+      "password": "12345",
+      "city": "Barranquilla",
+      "role": "user"
     }
   ],
   "pets": [
@@ -59,6 +67,126 @@
       "type": "perro",
       "image": "https://cdn2.thedogapi.com/images/2eGz64AAY.jpg",
       "userId": "cf25"
+    },
+    {
+      "id": "1f9f4f28-9bfa-43d1-9148-9c9464cb5ef5",
+      "name": "Max",
+      "age": "5",
+      "breed": "",
+      "temperament": "Tranquilo",
+      "weight": "25",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/6jNaXEFxv.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "828998e0-9d9a-409b-a526-f2b60e41504e",
+      "name": "Luna",
+      "age": "3",
+      "breed": "Beagle",
+      "temperament": "Jugueton",
+      "weight": "8",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "c1bf1104-96d1-4f48-b189-f742599c0439",
+      "name": "Rocky",
+      "age": "7",
+      "breed": "",
+      "temperament": "Cauteloso",
+      "weight": "30",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/ILaCjZC33.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "afc54f43-cc84-452e-88b4-feb20ea904f4",
+      "name": "Bella",
+      "age": "2",
+      "breed": "",
+      "temperament": "Jugueton",
+      "weight": "30",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/32KnsNfYL.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "692fd06c-91ac-493b-b580-26e38520bed5",
+      "name": "Toby",
+      "age": "2",
+      "breed": "",
+      "temperament": "Tranquilo",
+      "weight": "6",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "d581b466-4d3d-422e-bcd9-a0b5d9b1b7ac",
+      "name": "Nala",
+      "age": "4",
+      "breed": "",
+      "temperament": "Aburrido",
+      "weight": "4",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/UCifm-g71.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "77a651c3-27a3-46ef-9738-0da192cb6e6f",
+      "name": "Bruno",
+      "age": "6",
+      "breed": "",
+      "temperament": "Dormilon",
+      "weight": "6",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/ds6.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "cd4600fc-f541-40cb-bde7-aad27a400977",
+      "name": "Kira",
+      "age": "8",
+      "breed": "",
+      "temperament": "Jugueton",
+      "weight": "3",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/MTY0Njk3MQ.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "a768f5d8-1ad6-40ee-9aa1-e54ce9ec9f31",
+      "name": "Zeus",
+      "age": "5",
+      "breed": "",
+      "temperament": "Tranquilo",
+      "weight": "5",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/287.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "1b945d83-c154-4ab3-bec1-7204e6e8c5ef",
+      "name": "Lola",
+      "age": "5",
+      "breed": "",
+      "temperament": "Cautelosa",
+      "weight": "8",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/U-B3L9JWm.jpg",
+      "userId": "27e6"
     }
   ],
   "matches": [
@@ -70,6 +198,39 @@
       "petInfo": {
         "url": "https://cdn2.thecatapi.com/images/9s7.jpg",
         "name": "Michu",
+        "temperament": "Cauteloso"
+      }
+    },
+    {
+      "id": "e2560a31-d41d-4bfc-9525-1c4464c4c797",
+      "userId": "cf25",
+      "petId": "1f9f4f28-9bfa-43d1-9148-9c9464cb5ef5",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/6jNaXEFxv.jpg",
+        "name": "Max",
+        "temperament": "Tranquilo"
+      }
+    },
+    {
+      "id": "c1c601ff-e71e-4780-8e7a-2491bd91d58c",
+      "userId": "cf25",
+      "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
+        "name": "Luna",
+        "temperament": "Jugueton"
+      }
+    },
+    {
+      "id": "12eb6821-e128-4df8-b352-038d7a98fdf9",
+      "userId": "cf25",
+      "petId": "c1bf1104-96d1-4f48-b189-f742599c0439",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/ILaCjZC33.jpg",
+        "name": "Rocky",
         "temperament": "Cauteloso"
       }
     }
@@ -116,6 +277,20 @@
       "receiverId": "cf25",
       "message": "Perfecto",
       "timestamp": "2025-07-27T03:16:48.398Z"
+    },
+    {
+      "id": "5875",
+      "senderId": "cf25",
+      "receiverId": "27e6",
+      "message": "Hola! Estoy interesado en Max",
+      "timestamp": "2025-07-27T15:15:06.957Z"
+    },
+    {
+      "id": "f147",
+      "senderId": "27e6",
+      "receiverId": "cf25",
+      "message": "Si claro, que día podría venir por el? ",
+      "timestamp": "2025-07-27T15:16:56.498Z"
     }
   ]
 }
