@@ -134,24 +134,6 @@ export const MyPetsView = () => {
         handleSubmit={handleSubmit}
         isEditing={!!editingPetId}
       />
-
-      {/* ✅ SECCIÓN DE CHATS */}
-      <div className="mt-10">
-        <h2 className="text-xl font-bold mb-4 text-gray-200 max-sm:text-center">Mis Chats</h2>
-        {chats.length > 0 ? (
-          <div className="space-y-4">
-            {chats.map(chat => (
-              <div key={chat.id} className="bg-gray-800 rounded-xl p-4 text-white shadow-lg">
-                <p><strong>Con:</strong> {getUserName(chat.senderId)}</p>
-                <p><strong>Mensaje:</strong> {chat.message}</p>
-                <p className="text-sm text-gray-400">{new Date(chat.timestamp).toLocaleString()}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-400">Aún no tienes mensajes.</p>
-        )}
-      </div>
     </div>
   );
 };

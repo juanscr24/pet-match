@@ -63,50 +63,6 @@
   ],
   "matches": [
     {
-      "id": "e5dac0d7-93ca-4645-9ef1-14c5e10510ef",
-      "userId": "15a9",
-      "petId": null,
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/FsK9WepDe.jpg",
-        "name": "Hanna",
-        "temperament": "Juguetona"
-      }
-    },
-    {
-      "id": "05799a40-0a7c-4d27-b01a-5531696372e1",
-      "userId": "15a9",
-      "petId": "XcoqcsVzT",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thecatapi.com/images/XcoqcsVzT.jpg",
-        "name": "Cornish Rex",
-        "temperament": "Affectionate, Intelligent, Active, Curious, Playful"
-      }
-    },
-    {
-      "id": "e3470e55-4c7f-497c-b270-953ca38a49c9",
-      "userId": "15a9",
-      "petId": "Fw1MZmoRL",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/Fw1MZmoRL.png",
-        "name": "Saint Bernard",
-        "temperament": "Friendly, Lively, Gentle, Watchful, Calm"
-      }
-    },
-    {
-      "id": "1c39b533-7bb4-49e8-b157-1a880178eeb1",
-      "userId": "cf25",
-      "petId": "38KoA9gGB",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/38KoA9gGB.jpg",
-        "name": "Border Collie",
-        "temperament": "Tenacious, Keen, Energetic, Responsive, Alert, Intelligent"
-      }
-    },
-    {
       "id": "27c23b3f-9e1e-45ea-9036-58b2ce0f4ccb",
       "userId": "cf25",
       "petId": "5e3dad7b-0962-479b-9733-8f21ece393d1",
@@ -120,60 +76,46 @@
   ],
   "chats": [
     {
-      "id": "c48a",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "wqeqw",
-      "timestamp": "2025-07-27T02:23:50.007Z"
-    },
-    {
-      "id": "9da3",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "qweqwe",
-      "timestamp": "2025-07-27T02:23:51.812Z"
-    },
-    {
-      "id": "002f",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "qweqwe",
-      "timestamp": "2025-07-27T02:23:53.268Z"
-    },
-    {
-      "id": "489e",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "qweqweq",
-      "timestamp": "2025-07-27T02:23:54.646Z"
-    },
-    {
-      "id": "7fb0",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "qweqwe",
-      "timestamp": "2025-07-27T02:24:43.091Z"
-    },
-    {
-      "id": "2c12",
-      "senderId": "cf25",
-      "receiverId": null,
-      "message": "wqeqw",
-      "timestamp": "2025-07-27T02:26:56.432Z"
-    },
-    {
       "id": "b9dd",
       "senderId": "cf25",
       "receiverId": "15a9",
-      "message": "wqeqw",
+      "message": "Hola",
       "timestamp": "2025-07-27T02:30:31.979Z"
     },
     {
       "id": "040e",
       "senderId": "cf25",
       "receiverId": "15a9",
-      "message": "eqweqwe",
+      "message": "Estoy interesado",
       "timestamp": "2025-07-27T02:30:35.190Z"
+    },
+    {
+      "id": "5a6d",
+      "senderId": "cf25",
+      "receiverId": "15a9",
+      "message": "Todo bien ",
+      "timestamp": "2025-07-27T03:15:13.242Z"
+    },
+    {
+      "id": "fe2f",
+      "senderId": "15a9",
+      "receiverId": "cf25",
+      "message": "Bro, estas interesado en el perro?",
+      "timestamp": "2025-07-27T03:16:31.061Z"
+    },
+    {
+      "id": "7148",
+      "senderId": "cf25",
+      "receiverId": "15a9",
+      "message": "Si, lo estoy ",
+      "timestamp": "2025-07-27T03:16:38.935Z"
+    },
+    {
+      "id": "bb24",
+      "senderId": "15a9",
+      "receiverId": "cf25",
+      "message": "Perfecto",
+      "timestamp": "2025-07-27T03:16:48.398Z"
     }
   ]
 }
