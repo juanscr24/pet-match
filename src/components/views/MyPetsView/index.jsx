@@ -4,39 +4,50 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
 import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
+import { endPointChats, endPointUsers } from "@/lib/api"; // ✅ Asegúrate de tener esto en api.js
 import Swal from 'sweetalert2';
 
-// Se declara la Funcion de la vista
 export const MyPetsView = () => {
-  // Se declara los estados de la vista
   const [myPets, setMyPets] = useState([]);
+  const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
   });
   const [editingPetId, setEditingPetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  // Se trae el user del localStorage
   const currentUser = typeof window !== "undefined"
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-  // Se filtran las mascotas que he creado para que se rendericen en MyPetsViws
   const fetchPets = async () => {
     const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
 
-  // Se activa cuando se lanza el FetchPets
-  useEffect(() => { fetchPets(); }, []);
+  const fetchChats = async () => {
+    const [chatsRes, usersRes] = await Promise.all([
+      axios.get(endPointChats),
+      axios.get(endPointUsers)
+    ]);
+
+    const myChats = chatsRes.data.filter(chat => chat.receiverId === currentUser.id);
+    setChats(myChats);
+    setUsers(usersRes.data);
+  };
+
+  useEffect(() => {
+    fetchPets();
+    fetchChats();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Se declara la funcion que manejara el Form
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, age, temperament, type } = formData;
@@ -45,8 +56,6 @@ export const MyPetsView = () => {
     }
 
     let imageURL = formData.image || "";
-
-    // ✅ Traer imagen aleatoria si es perro o gato
     try {
       if (!imageURL && type.toLowerCase() === "perro") {
         const res = await axios.get(endPointApiDog, {
@@ -63,21 +72,15 @@ export const MyPetsView = () => {
       console.error("Error al traer imagen aleatoria:", err);
     }
 
-    // Traen todo lo que guardo el formulario adicional guarde la imagen y userId
     const petPayload = {
       ...formData,
       image: imageURL,
       userId: currentUser.id
     };
 
-    // Se valida si existe
     if (editingPetId) {
-      // Se trae el endpoint para hacer un Put, o actualizar
       await axios.put(`${endPointPets}/${editingPetId}`, petPayload);
-      // Se reincian los estados
       setEditingPetId(null);
-
-      // En caso que no tenga, se crea un nuevo objeto
     } else {
       const newPet = { id: uuid(), ...petPayload };
       await axios.post(endPointPets, newPet);
@@ -88,14 +91,12 @@ export const MyPetsView = () => {
     fetchPets();
   };
 
-  // Funcion para editar la mascota
   const handleEdit = (pet) => {
     setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
     setShowForm(true);
   };
 
-  // Funcion para eliminar la mascota
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: '¿Estás seguro?',
@@ -108,7 +109,6 @@ export const MyPetsView = () => {
       cancelButtonColor: '#3085d6',
     });
 
-    // Aqui se confirma si deseas eliminar la mascota 
     if (result.isConfirmed) {
       await axios.delete(`${endPointPets}/${id}`);
       fetchPets();
@@ -116,8 +116,9 @@ export const MyPetsView = () => {
     }
   };
 
-  // Se alterna el estado del Form
   const toggleForm = () => setShowForm(prev => !prev);
+
+  const getUserName = (id) => users.find(u => u.id === id)?.name || "Desconocido";
 
   return (
     <div className='p-5 max-sm:p-8'>
