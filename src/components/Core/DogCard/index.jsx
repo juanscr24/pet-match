@@ -19,8 +19,10 @@ export default function DogCard() {
 
     const fetchCustomPets = async () => {
         try {
-            const response = await axios.get(`${endPointPets}?userId=${currentUserId}`);
-            setCustomPets(response.data);
+            const response = await axios.get(endPointPets);
+            // Filtrar mascotas que no sean del usuario actual
+            const petsFromOthers = response.data.filter(pet => pet.userId !== currentUserId);
+            setCustomPets(petsFromOthers);
         } catch (error) {
             console.error('Error cargando mascotas creadas:', error);
         }
@@ -69,11 +71,13 @@ export default function DogCard() {
     };
 
     useEffect(() => {
-        fetchCustomPets();
-    }, []);
+        if (currentUserId) {
+            fetchCustomPets();
+        }
+    }, [currentUserId]);
 
     useEffect(() => {
-        if (customPets.length || currentIndex > 0) {
+        if (customPets.length >= 0) {
             fetchNextPet();
         }
     }, [customPets]);
@@ -106,7 +110,7 @@ export default function DogCard() {
     };
 
     if (loading || !apiPet) {
-        return <p className="text-center text-gray-600">Cargando peludito...</p>;
+        return <p className="text-center text-gray-200">Cargando peludito...</p>;
     }
 
     const breed = apiPet.breeds?.[0];

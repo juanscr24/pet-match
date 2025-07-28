@@ -12,18 +12,25 @@ import { Button } from '@/components/Core/Button';
 
 export const ProfileView = () => {
     const router = useRouter();
+    // Estado del usuario actual
     const [user, setUser] = useState(null);
+    // Estado de la descripción del perfil
     const [desc, setDesc] = useState('');
+    // Estado para activar o desactivar el modo de edición
     const [editMode, setEditMode] = useState(false);
+    // Estado para saber si está cargando algo
     const [loading, setLoading] = useState(false);
 
+    // useEffect que se ejecuta al montar el componente
     useEffect(() => {
+        // Si no hay usuario logueado, redirige al login
         const fetchUser = async () => {
             if (!isAuthenticated()) {
                 router.replace('/login');
                 return;
             }
 
+             // Obtiene el usuario desde el localStorage
             const storedUser = getUser();
             try {
                 const { data } = await axios.get(`${endPointUsers}/${storedUser.id}`);
@@ -34,13 +41,16 @@ export const ProfileView = () => {
             }
         };
 
+        // Llama a la función al cargar
         fetchUser();
     }, []);
 
+    // Función para guardar cambios de nombre o descripción
     const handleSave = async () => {
         if (!user || user.name.trim() === '') return;
         setLoading(true);
         try {
+            // Actualiza el usuario en la base de datos
             const { data } = await axios.patch(`${endPointUsers}/${user.id}`, {
                 name: user.name,
                 desc,
@@ -58,14 +68,16 @@ export const ProfileView = () => {
         }
     };
 
-
+    // Función para eliminar solo la descripción del usuario
     const handleDelete = async () => {
         if (!user) return;
         setLoading(true);
         try {
+            // Quita la descripción en la base de datos
             await axios.patch(`${endPointUsers}/${user.id}`, {
                 desc: '',
             });
+             // Limpia la descripción localmente
             setDesc('');
             setEditMode(false);
         } catch (error) {
@@ -74,9 +86,10 @@ export const ProfileView = () => {
             setLoading(false);
         }
     };
-
+    // Si no hay usuario cargado, no se muestra nada
     if (!user) return null;
 
+    // Renderiza la View
     return (
         <section className="p-5 max-w-2xl text-white">
             <h1 className="text-xl font-bold mb-6">Profile</h1>

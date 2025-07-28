@@ -10,14 +10,18 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { StatsCard } from '@/components/Core/StatsCard';
 
 
+// Declaramos una funcion la cual tendra la funcionalidad y el renderizado de la pagina
 export const StatisticsView = () => {
+    // Declaramos los hooks, y tomamos los estados para ser guardados
     const [users, setUsers] = useState([]);
     const [pets, setPets] = useState([]);
     const [matches, setMatches] = useState([]);
 
+    // Este código dentro del useEffect se ejecutará una sola vez al montar el componente
     useEffect(() => {
         const fetchData = async () => {
             const [usersRes, petsRes, matchesRes] = await Promise.all([
+                // Se traen con un metodo Get todos los EndPoint
                 axios.get(endPointUsers),
                 axios.get(endPointPets),
                 axios.get(endPointMatches),
@@ -26,6 +30,7 @@ export const StatisticsView = () => {
             setPets(petsRes.data);
             setMatches(matchesRes.data);
         };
+        // Se ejecuta la funcion
         fetchData();
     }, []);
 
@@ -35,6 +40,7 @@ export const StatisticsView = () => {
         return acc;
     }, {});
 
+    // Se buscan todas ciudades que hay por usuario y luego se suman o iteran
     const usuariosPorCiudad = users.reduce((acc, user) => {
         const ciudad = user.city?.toLowerCase();
         acc[ciudad] = (acc[ciudad] || 0) + 1;

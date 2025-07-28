@@ -1,8 +1,20 @@
 'use client';
+import { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Button } from "@/components/Core/Button";
+import { ChatModal } from '../ChatModal';
 
-export const CardMatch = ({ pet, onDelete }) => {
+export const CardMatch = ({ pet, onDelete, currentUser }) => {
+    const [showChat, setShowChat] = useState(false);
+
+    const handleOpenChat = () => {
+        setShowChat(true);
+    };
+
+    const handleCloseChat = () => {
+        setShowChat(false);
+    };
+
     return (
         <div className="relative h-[410px] max-xl:h-[350px] max-sm:h-[410px] rounded-lg overflow-hidden shadow-2xl text-white font-sans group">
             <img
@@ -17,7 +29,7 @@ export const CardMatch = ({ pet, onDelete }) => {
                     {pet.temperament}
                 </p>
                 <div className="mt-5 flex justify-center gap-5">
-                    <Button fit className='bg-red-500/60 hover:bg-red-500/80'>
+                    <Button fit onClick={handleOpenChat} className='bg-red-500/60 hover:bg-red-500/80'>
                         <FavoriteBorderIcon />
                     </Button>
                     <Button
@@ -30,6 +42,14 @@ export const CardMatch = ({ pet, onDelete }) => {
                     </Button>
                 </div>
             </div>
+
+            {showChat && (
+                <ChatModal
+                    onClose={handleCloseChat}
+                    pet={pet}
+                    currentUser={currentUser}
+                />
+            )}
         </div>
     );
 };

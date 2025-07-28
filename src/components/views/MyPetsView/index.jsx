@@ -4,9 +4,13 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
 import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
+import { endPointChats, endPointUsers } from "@/lib/api"; // ✅ Asegúrate de tener esto en api.js
+import Swal from 'sweetalert2';
 
 export const MyPetsView = () => {
   const [myPets, setMyPets] = useState([]);
+  const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
   });
@@ -23,7 +27,21 @@ export const MyPetsView = () => {
     setMyPets(filtered);
   };
 
-  useEffect(() => { fetchPets(); }, []);
+  const fetchChats = async () => {
+    const [chatsRes, usersRes] = await Promise.all([
+      axios.get(endPointChats),
+      axios.get(endPointUsers)
+    ]);
+
+    const myChats = chatsRes.data.filter(chat => chat.receiverId === currentUser.id);
+    setChats(myChats);
+    setUsers(usersRes.data);
+  };
+
+  useEffect(() => {
+    fetchPets();
+    fetchChats();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,8 +56,6 @@ export const MyPetsView = () => {
     }
 
     let imageURL = formData.image || "";
-
-    // ✅ Traer imagen aleatoria si es perro o gato
     try {
       if (!imageURL && type.toLowerCase() === "perro") {
         const res = await axios.get(endPointApiDog, {
@@ -82,15 +98,31 @@ export const MyPetsView = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`${endPointPets}/${id}`);
-    fetchPets();
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta mascota será eliminada!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    });
+
+    if (result.isConfirmed) {
+      await axios.delete(`${endPointPets}/${id}`);
+      fetchPets();
+      Swal.fire('Eliminado', 'La mascota ha sido eliminada.', 'success');
+    }
   };
 
   const toggleForm = () => setShowForm(prev => !prev);
 
+  const getUserName = (id) => users.find(u => u.id === id)?.name || "Desconocido";
+
   return (
     <div className='p-5 max-sm:p-8'>
-      <h2 className="text-xl font-bold mb-4 text-gray-200">Mis Mascotas</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-200 max-sm:text-center">Mis Mascotas</h2>
       <MyPetsCardList
         pets={myPets}
         onEdit={handleEdit}

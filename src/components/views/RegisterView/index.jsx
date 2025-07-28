@@ -1,3 +1,4 @@
+// Indica que este archivo se ejecuta del lado del cliente
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -9,20 +10,30 @@ import { Input } from '@/components/Core/Input';
 import Link from 'next/link';
 
 export default function RegisterView() {
+    // Inicializa el router para redireccionar
     const router = useRouter();
+    // Estado para el nombre
     const [name, setName] = useState('');
+    // Estado para el email
     const [email, setEmail] = useState('');
+    // Estado para la contraseña
     const [pw, setPw] = useState('');
+    // Estado para la ciudad
     const [city, setCity] = useState('');
-    const [role, setRole] = useState('user'); // Rol seleccionable
+    // Estado para los roles y viene por definido usuario
+    const [role, setRole] = useState('user'); 
+    // Estado para errores
     const [error, setError] = useState('');
 
+    // useEffect que se ejecuta al cargar la vista
     useEffect(() => {
+        // Si el usuario ya está autenticado, lo redirige al dashboard
         if (isAuthenticated()) {
             router.replace('/dashboard');
         }
     }, []);
 
+    // Función que se ejecuta al enviar el formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -55,6 +66,7 @@ export default function RegisterView() {
         }
     };
 
+    // Renderizado de la pagina
     return (
         <div
             className="relative flex justify-center items-center min-h-screen bg-cover bg-center"
@@ -63,7 +75,6 @@ export default function RegisterView() {
                     "url('https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg')",
             }}
         >
-            {/* Capa oscura con desenfoque */}
             <div className="absolute inset-0 bg-black/50 "></div>
             <form
                 onSubmit={handleSubmit}

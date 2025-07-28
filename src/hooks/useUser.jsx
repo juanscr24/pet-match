@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+// Funcion donde traigo el usuario que esta ahora activo en el Local Storage
 export function useUser() {
     const [user, setUser] = useState(null);
 
