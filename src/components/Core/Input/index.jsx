@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const Input = ({name, type, value, onChange, placeholder, required, className, white}) => {
+    // Input generico para el proyecto
     return (
         <input
             name={name}

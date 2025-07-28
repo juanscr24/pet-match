@@ -1,5 +1,5 @@
 "use client";
-
+// importaciones necesarias
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { endPointChats, endPointUsers } from "@/lib/api";
@@ -7,13 +7,16 @@ import { Button } from "@/components/Core/Button";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SendIcon from '@mui/icons-material/Send';
 
+// Se declara una Arrow function 
 export const ChatView = () => {
+    // Estados para manejar.
     const [currentUser, setCurrentUser] = useState(null);
     const [chats, setChats] = useState([]);
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState("");
     const [receiver, setReceiver] = useState(null);
 
+    // Obtener el usuario actual desde localStorage
     useEffect(() => {
         if (typeof window !== "undefined") {
             const user = JSON.parse(localStorage.getItem("user"));
