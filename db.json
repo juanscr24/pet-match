@@ -296,6 +296,18 @@
       "type": "perro",
       "image": "https://cdn2.thedogapi.com/images/YOZ3-uVvB.jpg",
       "userId": "27e6"
+    },
+    {
+      "id": "0bf8dc8c-554f-49e1-998c-60fd8e193c7c",
+      "name": "wqfwf",
+      "age": "fwqf`f",
+      "breed": "wefwef",
+      "temperament": "ewfwef",
+      "weight": "",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/4zVQwK8pM.jpg",
+      "userId": "cf25"
     }
   ],
   "matches": [
@@ -368,6 +380,17 @@
     {
       "id": "36ac9f95-58e2-4151-afc9-2ec779473842",
       "userId": "15a9",
+      "petId": "692fd06c-91ac-493b-b580-26e38520bed5",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
+        "name": "Toby",
+        "temperament": "Tranquilo"
+      }
+    },
+    {
+      "id": "d461731d-0c9b-48d1-9227-3802b9de16ac",
+      "userId": "cf25",
       "petId": "692fd06c-91ac-493b-b580-26e38520bed5",
       "liked": true,
       "petInfo": {
@@ -503,6 +526,13 @@
       "receiverId": "27e6",
       "message": "Me pareció super linda",
       "timestamp": "2025-07-28T03:26:43.150Z"
+    },
+    {
+      "id": "568a",
+      "senderId": "cf25",
+      "receiverId": "27e6",
+      "message": "Ey tal cosa",
+      "timestamp": "2025-07-28T18:11:15.245Z"
     }
   ]
 }
