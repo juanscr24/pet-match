@@ -333,17 +333,6 @@
       }
     },
     {
-      "id": "0cabcb71-2d82-471e-9f57-cd0c5baedd82",
-      "userId": "cf25",
-      "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
-      "liked": true,
-      "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
-        "name": "Luna",
-        "temperament": "Jugueton"
-      }
-    },
-    {
       "id": "8a429f4a-dccb-4e26-9b57-30a240656914",
       "userId": "15a9",
       "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
@@ -357,6 +346,28 @@
     {
       "id": "97189040-2a26-4716-9e28-e8c2546227d3",
       "userId": "e538",
+      "petId": "692fd06c-91ac-493b-b580-26e38520bed5",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
+        "name": "Toby",
+        "temperament": "Tranquilo"
+      }
+    },
+    {
+      "id": "5c21ef6b-d02a-4596-a40c-aad4a908cab7",
+      "userId": "cf25",
+      "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
+        "name": "Luna",
+        "temperament": "Jugueton"
+      }
+    },
+    {
+      "id": "36ac9f95-58e2-4151-afc9-2ec779473842",
+      "userId": "15a9",
       "petId": "692fd06c-91ac-493b-b580-26e38520bed5",
       "liked": true,
       "petInfo": {
