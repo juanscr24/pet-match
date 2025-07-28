@@ -2,6 +2,7 @@
 export const endPointUsers = 'http://localhost:3001/users'
 export const endPointPets = 'http://localhost:3001/pets'
 export const endPointMatches = 'http://localhost:3001/matches'
+export const endPointChats = 'http://localhost:3001/chats'
 
 // EndPoints de Apis con sus respectivas llaves
 export const endPointApiDog = 'https://api.thedogapi.com/v1/images/search?include_breeds=1'

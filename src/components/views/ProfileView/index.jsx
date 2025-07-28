@@ -92,7 +92,7 @@ export const ProfileView = () => {
     // Renderiza la View
     return (
         <section className="p-5 max-w-2xl text-white">
-            <h1 className="text-xl font-bold mb-6">Profile</h1>
+            <h1 className="text-xl font-bold mb-6">Perfil</h1>
 
             <div className="bg-black/40 p-6 rounded-2xl shadow-md backdrop-blur-md flex flex-col md:flex-row gap-10 items-center">
                 <div className="w-40 h-40 bg-white rounded-full flex items-center justify-center overflow-hidden">

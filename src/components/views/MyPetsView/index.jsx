@@ -1,53 +1,67 @@
 "use client";
+// Importaciones necesarias
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { MyPetsCardList } from "@/components/Core/MyPetsCard";
 import { endPointPets, endPointApiDog, KeyApiDog, endPointApiCat, KeyApiCat } from "@/lib/api";
+import { endPointChats, endPointUsers } from "@/lib/api"; // ✅ Asegúrate de tener esto en api.js
 import Swal from 'sweetalert2';
 
-// Se declara la Funcion de la vista
 export const MyPetsView = () => {
-  // Se declara los estados de la vista
+  // Estados para manejar mascotas, chats, usuarios, formulario, edición, etc.
   const [myPets, setMyPets] = useState([]);
+  const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: ""
   });
+  // ID de mascota en edición
   const [editingPetId, setEditingPetId] = useState(null);
   const [showForm, setShowForm] = useState(false);
-
-  // Se trae el user del localStorage
+  // Obtener el usuario actual desde localStorage
   const currentUser = typeof window !== "undefined"
     ? JSON.parse(localStorage.getItem("user"))
     : null;
-
-  // Se filtran las mascotas que he creado para que se rendericen en MyPetsViws
+  // Función para obtener todas las mascotas y filtrar las del usuario actual
   const fetchPets = async () => {
     const response = await axios.get(endPointPets);
     const filtered = response.data.filter(pet => pet.userId === currentUser?.id);
     setMyPets(filtered);
   };
 
-  // Se activa cuando se lanza el FetchPets
-  useEffect(() => { fetchPets(); }, []);
+  // Función para obtener chats y usuarios, filtrando solo los chats donde el usuario es receptor
+  const fetchChats = async () => {
+    const [chatsRes, usersRes] = await Promise.all([
+      axios.get(endPointChats),
+      axios.get(endPointUsers)
+    ]);
 
+    const myChats = chatsRes.data.filter(chat => chat.receiverId === currentUser.id);
+    setChats(myChats);
+    setUsers(usersRes.data);
+  };
+  // useEffect que se ejecuta al montar el componente para cargar datos iniciales
+  useEffect(() => {
+    fetchPets();
+    fetchChats();
+  }, []);
+  // Maneja el cambio de los inputs del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
-  // Se declara la funcion que manejara el Form
+  // Enviar el formulario: crea o actualiza una mascota
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, age, temperament, type } = formData;
     if (!name || !age || !temperament || !type) {
       return alert("Nombre, edad, temperamento y tipo son obligatorios");
     }
-
+    // Validación básica
     let imageURL = formData.image || "";
-
-    // ✅ Traer imagen aleatoria si es perro o gato
     try {
+      // Si no se proporcionó una imagen, obtener una aleatoria según el tipo
       if (!imageURL && type.toLowerCase() === "perro") {
         const res = await axios.get(endPointApiDog, {
           headers: { "x-api-key": KeyApiDog }
@@ -62,40 +76,32 @@ export const MyPetsView = () => {
     } catch (err) {
       console.error("Error al traer imagen aleatoria:", err);
     }
-
-    // Traen todo lo que guardo el formulario adicional guarde la imagen y userId
+    // Construir payload para enviar
     const petPayload = {
       ...formData,
       image: imageURL,
       userId: currentUser.id
     };
-
-    // Se valida si existe
+    // Si se está editando una mascota existente
     if (editingPetId) {
-      // Se trae el endpoint para hacer un Put, o actualizar
       await axios.put(`${endPointPets}/${editingPetId}`, petPayload);
-      // Se reincian los estados
       setEditingPetId(null);
-
-      // En caso que no tenga, se crea un nuevo objeto
     } else {
       const newPet = { id: uuid(), ...petPayload };
       await axios.post(endPointPets, newPet);
     }
-
+    // Limpiar formulario y recargar mascotas
     setFormData({ name: "", age: "", breed: "", temperament: "", weight: "", lifeExpectancy: "", type: "", image: "" });
     setShowForm(false);
     fetchPets();
   };
-
-  // Funcion para editar la mascota
+  // Activar modo de edición y llenar formulario con datos existentes
   const handleEdit = (pet) => {
     setFormData({ ...pet, type: pet.type || "" });
     setEditingPetId(pet.id);
     setShowForm(true);
   };
-
-  // Funcion para eliminar la mascota
+  // Eliminar mascota con confirmación mediante SweetAlert
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: '¿Estás seguro?',
@@ -108,7 +114,6 @@ export const MyPetsView = () => {
       cancelButtonColor: '#3085d6',
     });
 
-    // Aqui se confirma si deseas eliminar la mascota 
     if (result.isConfirmed) {
       await axios.delete(`${endPointPets}/${id}`);
       fetchPets();
@@ -116,8 +121,9 @@ export const MyPetsView = () => {
     }
   };
 
-  // Se alterna el estado del Form
   const toggleForm = () => setShowForm(prev => !prev);
+
+  const getUserName = (id) => users.find(u => u.id === id)?.name || "Desconocido";
 
   return (
     <div className='p-5 max-sm:p-8'>
