@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Button } from "@/components/Core/Button";
-import { ChatModal } from '@/app/ChatModal';
+import { ChatModal } from '../ChatModal';
 
 export const CardMatch = ({ pet, onDelete, currentUser }) => {
     const [showChat, setShowChat] = useState(false);

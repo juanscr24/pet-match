@@ -40,7 +40,8 @@
       "email": "fundacion@gmail.com",
       "password": "12345",
       "city": "Barranquilla",
-      "role": "user"
+      "role": "user",
+      "desc": "Mascotas en adopcion "
     }
   ],
   "pets": [
@@ -187,6 +188,114 @@
       "type": "gato",
       "image": "https://cdn2.thecatapi.com/images/U-B3L9JWm.jpg",
       "userId": "27e6"
+    },
+    {
+      "id": "b5d0d8c6-913e-448e-861c-78d30e0d03cb",
+      "name": "Michu",
+      "age": "3",
+      "breed": "",
+      "temperament": "Cauteloso",
+      "weight": "4",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/UYp1-LQxI.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "bbcae7f0-28c8-4959-8f5d-e0013ae71e12",
+      "name": "Luna",
+      "age": "2",
+      "breed": "",
+      "temperament": "Juguetona",
+      "weight": "3.5",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/cf.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "f809c984-ecbb-4b27-a38f-57d59b61422e",
+      "name": "Tomas",
+      "age": "5",
+      "breed": "",
+      "temperament": "Curioso",
+      "weight": "4.6",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/4ok.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "2cb9b623-a9b4-43d2-bc7d-2d660262d0a0",
+      "name": "Coco",
+      "age": "4",
+      "breed": "",
+      "temperament": "Cariñoso",
+      "weight": "3.8",
+      "lifeExpectancy": "",
+      "type": "gato",
+      "image": "https://cdn2.thecatapi.com/images/rPTbM2Tvt.png",
+      "userId": "27e6"
+    },
+    {
+      "id": "075f61bc-517f-4750-a00d-db702531f92b",
+      "name": "Max",
+      "age": "6",
+      "breed": "",
+      "temperament": "Protector",
+      "weight": "22",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/8ogZCsDcp.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "402211ed-8de8-4b51-8d37-d1041b37f541",
+      "name": "Kira",
+      "age": "3",
+      "breed": "",
+      "temperament": "Energetico",
+      "weight": "5",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/kPTfiQ7mn.png",
+      "userId": "27e6"
+    },
+    {
+      "id": "2b2a8bae-45a8-4aa8-ae6a-7946349acb9e",
+      "name": "Rocky",
+      "age": "2",
+      "breed": "",
+      "temperament": "Sociable",
+      "weight": "20",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/VdUHW9aaz.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "934065eb-de3c-4904-9bca-124fdadf619b",
+      "name": "Bruno",
+      "age": "1",
+      "breed": "",
+      "temperament": "Travieso",
+      "weight": "15",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/satHCV8Ft.jpg",
+      "userId": "27e6"
+    },
+    {
+      "id": "3e00f980-b4a6-4037-8777-dcca6bd2569d",
+      "name": "Luna",
+      "age": "4",
+      "breed": "",
+      "temperament": "Tranquila",
+      "weight": "20",
+      "lifeExpectancy": "",
+      "type": "perro",
+      "image": "https://cdn2.thedogapi.com/images/YOZ3-uVvB.jpg",
+      "userId": "27e6"
     }
   ],
   "matches": [
@@ -213,7 +322,18 @@
       }
     },
     {
-      "id": "c1c601ff-e71e-4780-8e7a-2491bd91d58c",
+      "id": "12eb6821-e128-4df8-b352-038d7a98fdf9",
+      "userId": "cf25",
+      "petId": "c1bf1104-96d1-4f48-b189-f742599c0439",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/ILaCjZC33.jpg",
+        "name": "Rocky",
+        "temperament": "Cauteloso"
+      }
+    },
+    {
+      "id": "0cabcb71-2d82-471e-9f57-cd0c5baedd82",
       "userId": "cf25",
       "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
       "liked": true,
@@ -224,14 +344,25 @@
       }
     },
     {
-      "id": "12eb6821-e128-4df8-b352-038d7a98fdf9",
-      "userId": "cf25",
-      "petId": "c1bf1104-96d1-4f48-b189-f742599c0439",
+      "id": "8a429f4a-dccb-4e26-9b57-30a240656914",
+      "userId": "15a9",
+      "petId": "828998e0-9d9a-409b-a526-f2b60e41504e",
       "liked": true,
       "petInfo": {
-        "url": "https://cdn2.thedogapi.com/images/ILaCjZC33.jpg",
-        "name": "Rocky",
-        "temperament": "Cauteloso"
+        "url": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
+        "name": "Luna",
+        "temperament": "Jugueton"
+      }
+    },
+    {
+      "id": "97189040-2a26-4716-9e28-e8c2546227d3",
+      "userId": "e538",
+      "petId": "692fd06c-91ac-493b-b580-26e38520bed5",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/t2zfS_lrZ.jpg",
+        "name": "Toby",
+        "temperament": "Tranquilo"
       }
     }
   ],
@@ -291,6 +422,76 @@
       "receiverId": "cf25",
       "message": "Si claro, que día podría venir por el? ",
       "timestamp": "2025-07-27T15:16:56.498Z"
+    },
+    {
+      "id": "0b88",
+      "senderId": "cf25",
+      "receiverId": "27e6",
+      "message": "Hola! como esta?",
+      "timestamp": "2025-07-28T02:51:40.596Z"
+    },
+    {
+      "id": "5f78",
+      "senderId": "27e6",
+      "receiverId": "cf25",
+      "message": "Bien! Esta interesado en la mascota?",
+      "timestamp": "2025-07-28T02:52:03.750Z"
+    },
+    {
+      "id": "241c",
+      "senderId": "15a9",
+      "receiverId": "27e6",
+      "message": "Bro! Puedo ir por ella?",
+      "timestamp": "2025-07-28T03:09:29.255Z"
+    },
+    {
+      "id": "45c4",
+      "senderId": "e538",
+      "receiverId": "27e6",
+      "message": "Me encanta Toby, cuando puedo ir por el?",
+      "timestamp": "2025-07-28T03:11:01.019Z"
+    },
+    {
+      "id": "75d1",
+      "senderId": "27e6",
+      "receiverId": "e538",
+      "message": "Claro, como es nombre?",
+      "timestamp": "2025-07-28T03:25:10.440Z"
+    },
+    {
+      "id": "eef9",
+      "senderId": "e538",
+      "receiverId": "27e6",
+      "message": "Mucho gusto mi nombre es Vane",
+      "timestamp": "2025-07-28T03:25:31.427Z"
+    },
+    {
+      "id": "178d",
+      "senderId": "27e6",
+      "receiverId": "e538",
+      "message": "Esta interesada en adoptar a la mascota?",
+      "timestamp": "2025-07-28T03:26:10.359Z"
+    },
+    {
+      "id": "ffe1",
+      "senderId": "27e6",
+      "receiverId": "e538",
+      "message": "O solo pregunta?",
+      "timestamp": "2025-07-28T03:26:21.387Z"
+    },
+    {
+      "id": "e4fa",
+      "senderId": "e538",
+      "receiverId": "27e6",
+      "message": " Ambas cosas",
+      "timestamp": "2025-07-28T03:26:36.249Z"
+    },
+    {
+      "id": "56cb",
+      "senderId": "e538",
+      "receiverId": "27e6",
+      "message": "Me pareció super linda",
+      "timestamp": "2025-07-28T03:26:43.150Z"
     }
   ]
 }
