@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { endPointChats, endPointUsers } from "@/lib/api";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Button } from "@/components/Core/Button";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import SendIcon from '@mui/icons-material/Send';
 
 export const ChatView = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -79,7 +80,7 @@ export const ChatView = () => {
     }
 
     return (
-        <div className="flex max-sm:flex-col p-5 gap-1 text-white h-[100%] justify-center items-center">
+        <div className="flex max-sm:flex-col p-5 gap-1 text-white h-[100%] justify-center items-center backdrop-blur-lg max-sm:gap-6">
             {/* Lista de usuarios */}
             <div className="overflow-y-auto w-[30%] max-xl:w-[40%] px-3 max-lg:w-[60%] gap-2 max-sm:w-full max-sm:h-44 max-sm:pb-5 rounded-lg flex flex-col items-center shadow-xl pt-3 bg-black/40 h-[100%]">
                 <h2 className="text-lg font-semibold">Chats</h2>
@@ -100,17 +101,17 @@ export const ChatView = () => {
             <div className="flex flex-col w-[100%] rounded-lg gap-1 h-[100%]">
                 {receiver ? (
                     <>
-                        <div className="shadow-xl bg-black/40 font-semibold text-lg rounded-lg p-3 flex gap-2 items-center">
+                        <div className="shadow-xl bg-gray-600/80 font-semibold text-lg rounded-lg p-3 flex gap-2 items-center">
                             <AccountCircleIcon />
                             {receiver.name}
                         </div>
-                        <div className="overflow-y-auto shadow-xl bg-black/40 space-y-2 rounded-lg py-2 px-4 h-[100%]">
+                        <div className="pt-5 overflow-y-auto shadow-xl bg-black/40 space-y-2 rounded-lg py-2 px-4 h-[100%]">
                             {getMessagesWithUser(receiver.id).map(msg => (
                                 <div
                                     key={msg.id}
                                     className={`max-w-xs max-lg:w-[70%] max-sm:w-[80%] rounded-lg ${msg.senderId === currentUser.id
-                                            ? "bg-blue-500 text-white ml-auto py-1 px-2"
-                                            : "bg-gray-300 text-black py-1 px-2"
+                                            ? "bg-gray-600/80 text-white ml-auto py-1 px-2"
+                                            : "bg-white/80 text-black py-1 px-2"
                                         }`}
                                 >
                                     {msg.message}
@@ -123,7 +124,7 @@ export const ChatView = () => {
                         <div className="p-2 flex items-center gap-2 shadow-xl bg-black/40 rounded-lg">
                             <input
                                 type="text"
-                                className="flex-1 outline-none rounded-lg p-1"
+                                className="flex-1 outline-none rounded-lg p-1 text-white placeholder:text-gray-100"
                                 placeholder="Escribe un mensaje..."
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
