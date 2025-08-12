@@ -10,6 +10,8 @@ En Colombia, miles de perros viven en condición de abandono, expuestos a maltra
 Pet-Match es una app interactiva que conecta a usuarios con perros en adopción de forma sencilla y segura. Permite visualizar perros con datos reales extraídos desde TheDogAPI, gestionar "likes" y "matches", y llevar un registro de las solicitudes de adopción. Cuenta con autenticación por roles, rutas protegidas, persistencia de sesión y backend simulado con json-server.
 
 ## 🚀 Tecnologías utilizadas
+Node 22
+
 Next.js 15
 
 React

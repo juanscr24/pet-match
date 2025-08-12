@@ -2,12 +2,12 @@
   "users": [
     {
       "id": "cf25",
-      "name": "for",
+      "name": "Forlan Ordoñez",
       "email": "for@gmail.com",
       "password": "12345",
       "city": "Barranquilla",
       "role": "user",
-      "desc": "asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf asfasf asf asfasasf asfas asf asfasf asfasfasfasf"
+      "desc": "En busca de un amigo canino\n"
     },
     {
       "id": "e538",
@@ -28,11 +28,12 @@
     },
     {
       "id": "86f2",
-      "name": "allison",
+      "name": "Allison Segrera",
       "email": "allisonpauleth13@gmail.com",
       "password": "123",
       "city": "barranquilla",
-      "role": "user"
+      "role": "user",
+      "desc": "En busca de una mascota"
     },
     {
       "id": "27e6",
@@ -68,42 +69,6 @@
       "type": "perro",
       "image": "https://cdn2.thedogapi.com/images/2eGz64AAY.jpg",
       "userId": "cf25"
-    },
-    {
-      "id": "1f9f4f28-9bfa-43d1-9148-9c9464cb5ef5",
-      "name": "Max",
-      "age": "5",
-      "breed": "",
-      "temperament": "Tranquilo",
-      "weight": "25",
-      "lifeExpectancy": "",
-      "type": "perro",
-      "image": "https://cdn2.thedogapi.com/images/6jNaXEFxv.jpg",
-      "userId": "27e6"
-    },
-    {
-      "id": "828998e0-9d9a-409b-a526-f2b60e41504e",
-      "name": "Luna",
-      "age": "3",
-      "breed": "Beagle",
-      "temperament": "Jugueton",
-      "weight": "8",
-      "lifeExpectancy": "",
-      "type": "perro",
-      "image": "https://cdn2.thedogapi.com/images/G8PatafEl.jpg",
-      "userId": "27e6"
-    },
-    {
-      "id": "c1bf1104-96d1-4f48-b189-f742599c0439",
-      "name": "Rocky",
-      "age": "7",
-      "breed": "",
-      "temperament": "Cauteloso",
-      "weight": "30",
-      "lifeExpectancy": "",
-      "type": "perro",
-      "image": "https://cdn2.thedogapi.com/images/ILaCjZC33.jpg",
-      "userId": "27e6"
     },
     {
       "id": "afc54f43-cc84-452e-88b4-feb20ea904f4",
@@ -398,6 +363,39 @@
         "name": "Toby",
         "temperament": "Tranquilo"
       }
+    },
+    {
+      "id": "986c31e1-bdbd-4a2a-a2e4-e6f6d615f95e",
+      "userId": "cf25",
+      "petId": "934065eb-de3c-4904-9bca-124fdadf619b",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/satHCV8Ft.jpg",
+        "name": "Bruno",
+        "temperament": "Travieso"
+      }
+    },
+    {
+      "id": "d3bc387b-bda9-482b-b0ae-a88cab080739",
+      "userId": "cf25",
+      "petId": "3e00f980-b4a6-4037-8777-dcca6bd2569d",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/YOZ3-uVvB.jpg",
+        "name": "Luna",
+        "temperament": "Tranquila"
+      }
+    },
+    {
+      "id": "b294bbbf-659f-41a9-8033-38034f8b52a8",
+      "userId": "86f2",
+      "petId": "874f37b7-dd21-4a1a-861a-fe44c522eff8",
+      "liked": true,
+      "petInfo": {
+        "url": "https://cdn2.thedogapi.com/images/2eGz64AAY.jpg",
+        "name": "Hanna",
+        "temperament": "Jugueton"
+      }
     }
   ],
   "chats": [
@@ -533,6 +531,20 @@
       "receiverId": "27e6",
       "message": "Ey tal cosa",
       "timestamp": "2025-07-28T18:11:15.245Z"
+    },
+    {
+      "id": "0745",
+      "senderId": "cf25",
+      "receiverId": "15a9",
+      "message": "que raza e",
+      "timestamp": "2025-07-28T23:07:10.059Z"
+    },
+    {
+      "id": "d351",
+      "senderId": "86f2",
+      "receiverId": "cf25",
+      "message": "hola",
+      "timestamp": "2025-07-29T00:06:32.629Z"
     }
   ]
 }
